@@ -24,12 +24,13 @@ module.exports = defineConfig({
           // auto open devtools
           launchOptions.args.push('--auto-open-devtools-for-tabs')
           launchOptions.args.push('--disableblinkfeatures')
-          launchOptions.args.push('--disableblinkfeatures:AutomationControlled')
+          launchOptions.args.push('--disableblinkfeatures=AutomationControlled')
         }
       
         if (browser.family === 'firefox') {
           // auto open devtools
           launchOptions.args.push('-devtools')
+          launchOptions.args.push('--marionette=false')
         }
       
         if (browser.name === 'electron') {

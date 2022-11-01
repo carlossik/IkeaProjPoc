@@ -2,7 +2,7 @@ Feature: Sign in
 
   Background: Navigate to the Sign in Page
 
-  Scenario: without using any email address
+  Scenario:  using email address and Passwrd
   Given open the Ikea page
     When enter my username
     When enter my password

@@ -4,8 +4,9 @@ import signInPage from '../../support/pageobjects/signIn_page';
 
 Given(/^open the ([^"]*) page$/, (page) => {
   cy.visit('/');
-  cy.setCookie('session_id', 'dCAErBXgdMRDGFWo')
-  cy.visit('https://www.ikea.com/pt/en/loyalty-hub/')
+  cy.window().then((win) => {
+    win.eval('Object.defineProperty(navigator, \'webdriver\', {get: () => undefined})');
+   })
   
 });
 
