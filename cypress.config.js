@@ -53,6 +53,5 @@ module.exports = defineConfig({
       baseUrl: 'https://www.ikea.com/pt/en/profile/login/',
       excludeSpecPattern: ['*.js'],
    }
- 
   }
 })
