@@ -56,22 +56,3 @@ module.exports = defineConfig({
  
   }
 })
-
-// module.exports = defineConfig({
-//   viewportWidth: 1920,
-//   viewportHeight: 1080,
-//   defaultCommandTimeout: 20000,
-//   chromeWebSecurity: false,
-  
-//   fixturesFolder: false,
-//   e2e: {
-//     setupNodeEvents,
-//     specPattern: '**/*.feature',
-//     baseUrl: 'https://www.ikea.com/pt/en/profile/login/',
-//     excludeSpecPattern: ['*.js'],
-//     //experimentalSessionAndOrigin:true,
-//     //disableblinkfeatures:AutomationControlled
-
-   
-//   },
-// });
