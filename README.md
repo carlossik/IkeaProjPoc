@@ -31,7 +31,8 @@ cd cypress-cucumber-test-example
 ```
 
 - Run the test.
-
+run the test using cypress runner 
+ npx cypress open
 ```shell
 npm install && npm run test
 ```

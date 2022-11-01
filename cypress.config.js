@@ -23,6 +23,7 @@ module.exports = defineConfig({
         if (browser.family === 'chromium' && browser.name !== 'electron') {
           // auto open devtools
           launchOptions.args.push('--auto-open-devtools-for-tabs')
+          launchOptions.args.push('--disableblinkfeatures')
           launchOptions.args.push('--disableblinkfeatures:AutomationControlled')
         }
       
