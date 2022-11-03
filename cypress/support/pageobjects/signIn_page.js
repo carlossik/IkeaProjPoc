@@ -1,8 +1,9 @@
 import { faker } from '@faker-js/faker';
+import cypress from 'cypress';
 
 class SignInPage {
   typeEmailAddress() {
-    const emailAddress = 'ptfamilyprod@mailinator.com';
+    const emailAddress = Cypress.env('PTusername');
     cy.get('#username')
       .should('be.empty')
       .focus()
@@ -11,7 +12,7 @@ class SignInPage {
   }
 
   typePassWord() {
-    const password ='Loyaltytest1';
+    const password =Cypress.env('PTpassword');;
     cy.get('#password')
       .should('be.empty')
       .focus()
