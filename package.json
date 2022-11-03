@@ -19,6 +19,7 @@
   },
   "scripts": {
     "test": "cypress run --e2e --headed --browser chrome --spec **/*.feature",
+    "test-headless": "cypress run --e2e  --browser chrome --spec **/*.feature",
     "cy:open": "cypress open --e2e --browser chrome"
   },
   "repository": {

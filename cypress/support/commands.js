@@ -1,4 +1,4 @@
-/// <reference types="cypress"/>
+/// 
 
 // ***********************************************
 // This example commands.js shows you how to
@@ -26,9 +26,9 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('login', (email,password) => {
-    cy.visit('/');
-    cy.signInPage.typeEmailAddress(email)
-    cy.signInPage.typePassWord(password)
-    cy.signInPage.clickContinueButton()
-  })
+// Cypress.Commands.add('login', (email,password) => {
+//     cy.visit('/');
+//     cy.signInPage.typeEmailAddress(email)
+//     cy.signInPage.typePassWord(password)
+//     cy.signInPage.clickContinueButton()
+  // })
