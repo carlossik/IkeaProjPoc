@@ -19,12 +19,14 @@ module.exports = defineConfig({
         // `args` is an array of all the arguments that will
         // be passed to browsers when it launches
         console.log(launchOptions.args) // print all current args
-      
+        console.log(browser.family ,"This is the options")
+          
         if (browser.family === 'chromium' && browser.name !== 'electron') {
           // auto open devtools
+          console.log(browser.family ,"This is the options2")
           launchOptions.args.push('--auto-open-devtools-for-tabs')
           launchOptions.args.push('--disableblinkfeatures')
-          launchOptions.args.push('--disableblinkfeatures:AutomationControlled')
+          launchOptions.args.push('--disableblinkfeatures=AutomationControlled')
         }
       
         if (browser.family === 'firefox') {
@@ -52,7 +54,7 @@ module.exports = defineConfig({
     supportFile: "cypress/support/e2e.{js,jsx,ts,tsx}",
     e2e: {
       setupNodeEvents,
-     specPattern: '**/*.feature',
+      specPattern: ["**/*.feature", "cypress/support/step_definitions/**/*.cy.{js,jsx,ts,tsx}"],
       baseUrl: 'https://www.ikea.com/pt/en/profile/login/',
       excludeSpecPattern: ['*.js'],
    }
