@@ -11,6 +11,7 @@ const setupNodeEvents = async (on, config) => {
 module.exports = defineConfig({
   // setupNodeEvents can be defined in either
   // the e2e or component configuration
+  projectId: "3o6h3i",
   e2e: {
     async setupNodeEvents(on, config) {
       await preprocessor.addCucumberPreprocessorPlugin(on, config);
@@ -54,9 +55,10 @@ module.exports = defineConfig({
     supportFile: "cypress/support/e2e.{js,jsx,ts,tsx}",
     e2e: {
       setupNodeEvents,
-      specPattern: ["**/*.feature", "cypress/support/step_definitions/**/*.cy.{js,jsx,ts,tsx}"],
-      baseUrl: 'https://www.ikea.com/pt/en/profile/login/',
-      excludeSpecPattern: ['*.js'],
+      specPattern: ["**/*.feature", "cypress/support/step_definitions/**/*.{js,jsx,ts,tsx}"],
+      baseUrl: 'https://www.ikea.com/pt/en/',//profile/login/',
+      step_definitions: "cypress/e2e/**/*.{js,ts}"
+      ///excludeSpecPattern: ['*.js'],
    }
   }
 })

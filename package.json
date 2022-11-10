@@ -15,7 +15,7 @@
     "prettier": "^2.7.1"
   },
   "cypress-cucumber-preprocessor": {
-    "stepDefinitions": "cypress/support/step_definitions/**/*.{js,ts}"
+    "stepDefinitions": "cypress/e2e/**/*.{js,ts}"
   },
   "scripts": {
     "test": "cypress run --e2e --headed --browser chrome --spec **/*.feature",

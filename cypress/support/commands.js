@@ -32,3 +32,32 @@
 //     cy.signInPage.typePassWord(password)
 //     cy.signInPage.clickContinueButton()
   // })
+  Cypress.Commands.add('loginViaAPI', (
+    email = Cypress.env('PTusername'),
+    password = Cypress.env('PTpassword'),
+    client_id = Cypress.env('PTClientID'),
+    client_secret = Cypress.env('PTClientSecret')
+  ) => {
+    cy.request({
+      method: 'POST',
+      url: '/oauth/token',
+      form: true,
+      body: {
+        username:email,
+        password:password,
+        grant_type: 'password',
+        client_id: client_id,
+        client_secret: client_secret,
+        audience: 'https://retail.api.ikea.com',
+      },
+    });
+    }).then((response) => {
+      cy.setCookie('sessionId', response.body.sessionId)
+      cy.setCookie('userId', response.body.userId)
+      cy.setCookie('userName', response.body.userName)
+      cy.visit('/')
+    })
+  
+
+
+ 

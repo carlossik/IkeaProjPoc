@@ -3,7 +3,7 @@ Feature: Drill into Rewards pages
     Background: User is Logged in and on rewards page
 
     Scenario Outline: Scenario Outline name: User selects any reward displayed
-        Given I am on the home page
+        Given I am already logged into my acount
         And rewards grid is enabled
         When I click on any <Reward>
         Then the <Reward_Availability> button will be displayed
