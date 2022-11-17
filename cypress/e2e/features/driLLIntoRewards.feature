@@ -5,10 +5,10 @@ Feature: Drill into Rewards pages
     Scenario Outline: Scenario Outline name: User selects any reward displayed
         Given I am already logged into my acount
         And rewards grid is enabled
-        When I click on any <Reward>
-        Then the <Reward_Availability> button will be displayed
-        Then  <Number Of Keys>  for the reward is displayed
-        Then <Terms_of_use> of use is displayed
+        When I click on any '<Reward>'
+        Then the '<Reward_Availability>' button will be displayed
+        Then  '<Number Of Keys>'  for the reward is displayed
+        Then '<Terms_of_use>' of use is displayed
         Examples:
             | Reward                                 | Reward_Availability | Number Of Keys | Terms_of_use |
             | Cake & hot drink for one               | Available           | True           | True         |

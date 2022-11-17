@@ -4,6 +4,18 @@
 import { Given, When, Then, Before,After } from '@badeball/cypress-cucumber-preprocessor' ;
 import homePage from '../../support/pageobjects/home_page';
 import signInPage from '../../support/pageobjects/signIn_page';
+// //before(() => {
+//   cy.task('getAccessToken', {
+//     ...familyUser
+//   }).then(token => {
+//     cy.setCookie('idp_reguser', token);
+//   });
+// });
+
+// beforeEach(() => {
+//   cy.keepLoggedInCookie();
+// });
+
 
 Given('I am already logged into my acount', () => {
   cy.visit('/');

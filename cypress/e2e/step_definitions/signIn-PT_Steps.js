@@ -6,7 +6,7 @@ import signInPage from '../../support/pageobjects/signIn_page';
 
 Given(/^open the ([^"]*) page$/, (page) => {
   
-  cy.loginViaAPI()
+  cy.loginViaAPI
 //   cy.visit('/'), {
     
 // };
@@ -17,8 +17,17 @@ Given(/^open the ([^"]*) page$/, (page) => {
 });
 
 When(/^enter my username$/, () => {
-  signInPage.typeEmailAddress();
-});
+  // signInPage.typeEmailAddress();
+ 
+    cy.task('getAccessToken', {
+      
+    }).then(token => {
+      cy.setCookie('idp_reguser', token);
+      cy.visit('/')
+    });
+  });
+  
+
 When(/^enter my password$/, () => {
   signInPage.typePassWord();
 });
