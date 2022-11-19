@@ -2,9 +2,11 @@ import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
 const homePage = require("../../pages/HomePage").default;
 const RewardsPage = require("../../pages/RewardsPage").default;
+const logUser = require("../loginScript").default;
+
 
 Given("A User has successfully Logged into rewards page", function () {
-  cy.Login2();
+  logUser.login();
 });
 When("They select Cake and Coffee for one and click", function () {
   homePage.displayedRewards.cakeAndHotDrinkForOne().click({ fore: true });

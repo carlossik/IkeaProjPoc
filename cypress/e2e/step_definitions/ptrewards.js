@@ -1,9 +1,11 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
 const homePage = require("../../pages/HomePage").default;
+const logUser = require("../loginScript").default;
 
 Given("A User is already Logged into rewards page", function () {
-  cy.Login2();
+  logUser.login();
+  homePage.clickAcceptCookie
 });
 Then("my reward keys should be displayed", function () {
     homePage.clickAcceptCookie
@@ -26,10 +28,9 @@ Then("Total number of projects displayed is 4", function () {
 });
 Then("How to collect reward keys is displayed", function () {
   homePage.HowToCollectKeysdisplayed;
-//   cy.get('#earning-activities-title')
-//     .should('be.visible')
+
 });
 Then("Frequently asked questions are displayed", function () {
   homePage.Faqsdisplayed;
-  //cy.get('#title > :nth-child(1) > .faq__accordion__heading').click({force:true})
+  
 });
