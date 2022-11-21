@@ -42,7 +42,7 @@ When("They select voucher for sidewalk  and click", function () {
     cy.get('#rewards-reward-4900 > .rewards__rewards__inner').click({ force: true });
   });
   Then("voucher for home delivery page is displayed", function () {
-    cy.url().should("eq", RewardsPage.rewards.voucherForHomeDelivery)//"https://www.ikea.com/pt/en/loyalty-hub/rewards/4900/");
+    cy.url().should("eq", RewardsPage.rewards.voucherForHomeDelivery)
   });
   When("They select voucher for sidewalk delivery and click", function () {
     cy.get('#rewards-reward-4898 > .rewards__rewards__inner').click({ force: true });
