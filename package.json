@@ -1,7 +1,7 @@
 {
-  "name": "cypress-cucumber-boilerplate",
+  "name": "cypress-cucumber-test-example",
   "version": "2.2.0",
-  "description": "This project is meant to be a kind of template to start working with Cucumber and Cypress just cloning the project.",
+  "description": "This is a Proof of concept for end to End testing in Production/live environment",
   "main": "index.js",
   "scripts": {
     "cypress:runner": "cypress open",
