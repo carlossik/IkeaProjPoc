@@ -5,6 +5,7 @@ const logUser = require("../loginScript").default;
 
 Given("A User is already Logged into rewards page", function () {
   logUser.login();
+  
   homePage.clickAcceptCookie
 });
 Then("my reward keys should be displayed", function () {
@@ -15,10 +16,10 @@ Then("the number of rewards displayed are 10", function () {
   homePage.verifyRewards;
 });
 Then("total Keys are displayed", function () {
-  homePage.RewardTotaldisPlayed;
+  homePage.RewardTotaldisPlayed();
 });
 Then("History button is displayed", function () {
-  homePage.RewarHistoryButtonsdisplayed;
+  homePage.RewarHistoryButtonsdisplayed();
 });
 Then("my projects will be displayed", function () {
   homePage.verifyProjects;
@@ -27,10 +28,10 @@ Then("Total number of projects displayed is 4", function () {
   homePage.verifyNumberOfProjects;
 });
 Then("How to collect reward keys is displayed", function () {
-  homePage.HowToCollectKeysdisplayed;
+  homePage.HowToCollectKeysdisplayed();
 
 });
 Then("Frequently asked questions are displayed", function () {
-  homePage.Faqsdisplayed;
+  homePage.Faqsdisplayed();
   
 });

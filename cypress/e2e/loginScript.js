@@ -52,7 +52,7 @@ class Login{
            
             expect(response.status).to.equal(200);
             cy.setCookie('idp_reguser', this.value);
-            cy.visit('https://www.ikea.com/pt/en/loyalty-hub/')
+            cy.visit('https://www.ikea.com/it/en/loyalty-hub/')
             cy.get('#onetrust-accept-btn-handler')
             cy.wait(1000)
             cy.get('#onetrust-accept-btn-handler').click({force:true})

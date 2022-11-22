@@ -15,6 +15,7 @@ class HomePage {
     verifyProjects(){
         this.numberOfProjects.forEach((_project, index) => {
             _project.should('be.visible')
+            return this
 
         })
     }
@@ -43,6 +44,7 @@ class HomePage {
         cy.get('#rewards-total-balance > span')
         .should('be.visible')
         cy.log('reward is visible')
+        return this
     }
     
   clickAcceptCookie() {
@@ -55,12 +57,18 @@ class HomePage {
     CustomerMemberCardDisplayed(){
         cy.get('.member-card__section')
         .should('be.visible')
+        return this
     }
 
     HowToCollectKeysdisplayed()
     {
     cy.get('#earning-activities-title')
     .should('be.visible')
+    return this
+    }
+    memberNumber(){
+        cy.get('.member-card__number')
+        return this
     }
 
     Faqsdisplayed()
@@ -68,6 +76,7 @@ class HomePage {
         cy.get('#title > :nth-child(1) > .faq__accordion__heading')
         .should('be.visible')
         cy.get('#title > :nth-child(1) > .faq__accordion__heading').click({force:true})
+        return this
   
     }
    
