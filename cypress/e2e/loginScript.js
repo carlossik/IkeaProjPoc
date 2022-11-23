@@ -61,6 +61,33 @@ class Login{
             
       }
 
+      LoginCustomerAdmin(){cy.request({
+        method: 'POST', 
+    url: Cypress.env('PTauthUrl'), 
+    body: {
+        grant_type: 'password',
+        client_id:"" ,
+        client_secret:"" ,
+        username:"",
+        password:"",
+        audience: 'https://retail.api.ikea.com',
+          
+        },
+        Headers:{
+            'Content-Type':'application/x-www-form-urlencoded'
+         }
+         }).then(function(response){
+            this.value = response.body.access_token;
+            cy.log("Value "+this.value);
+    
+           
+            expect(response.status).to.equal(200);
+            cy.setCookie('idp_reguser', this.value);
+            cy.visit('')
+          });
+            
+      }
+
  
     }
 export default new Login();
