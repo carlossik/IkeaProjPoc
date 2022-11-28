@@ -4,7 +4,7 @@ const homePage = require("../../pages/HomePage").default;
 const logUser = require("../loginScript").default;
 
 Given("A ITUser is already Logged into rewards page", function () {
-  logUser.login();
+  logUser.loginIT();
   homePage.clickAcceptCookie
 });
 Then("my ITreward keys should be displayed", function () {

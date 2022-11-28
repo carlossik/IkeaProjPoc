@@ -30,6 +30,7 @@ class Login{
           });
             
       }
+
       loginIT(){cy.request({
         method: 'POST', 
     url: Cypress.env('ITauthUrl'), 
@@ -43,11 +44,11 @@ class Login{
           
         },
         Headers:{
-            'Content-Type':'application/x-www-form-urlencoded'
-         }
-         }).then(function(response){
-            this.value = response.body.access_token;
-            cy.log("Value "+this.value);
+          'Content-Type':'application/x-www-form-urlencoded'
+       }
+      }).then(function(response){
+        this.value = response.body.access_token;
+        cy.log("Value "+this.value);
     
            
             expect(response.status).to.equal(200);
@@ -61,30 +62,30 @@ class Login{
             
       }
 
-      LoginCustomerAdmin(){cy.request({
-        method: 'POST', 
-    url: Cypress.env('PTauthUrl'), 
-    body: {
-        grant_type: 'password',
-        client_id:"" ,
-        client_secret:"" ,
-        username:"",
-        password:"",
-        audience: 'https://retail.api.ikea.com',
+       LoginCustomerAdmin(){//cy.request({
+    //     method: 'POST', 
+    // url: Cypress.env('PTauthUrl'), 
+    // body: {
+    //     grant_type: 'password',
+    //     client_id:"" ,
+    //     client_secret:"" ,
+    //     username:"",
+    //     password:"",
+    //     audience: 'https://retail.api.ikea.com',
           
-        },
-        Headers:{
-            'Content-Type':'application/x-www-form-urlencoded'
-         }
-         }).then(function(response){
-            this.value = response.body.access_token;
-            cy.log("Value "+this.value);
+       // },
+       // Headers:{
+            //'Content-Type':'application/x-www-form-urlencoded'
+         //}
+        // }).then(function(response){
+            //this.value = response.body.access_token;
+            //cy.log("Value "+this.value);
     
            
-            expect(response.status).to.equal(200);
-            cy.setCookie('idp_reguser', this.value);
-            cy.visit('')
-          });
+            //expect(response.status).to.equal(200);
+           // cy.setCookie('idp_reguser', this.value);
+            cy.visit('https://private.prod.customeradmin.customer.ingka.com/')
+          //});
             
       }
 

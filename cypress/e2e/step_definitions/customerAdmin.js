@@ -5,18 +5,18 @@ const logUser = require("../loginScript").default;
 
 
 Given("A Customer admin is logged into their account", function () {
-    logUser.LoginCustomerAdmin()
-    return "pending";
+    cy.visit('https://private.prod.customeradmin.customer.ingka.com/')
+    
     });
 Then("Welcome Message is displayed",function(){
-return "pending"
+////return "pending"
 });
 Then("country selection drop down box is Displayed",function(){
-return "pending"
+//return "pending"
 });
 Then("Then Search Bar is displayed",function(){
     return "pending"
 });
 Then("Search Bar contains customer Free search Options",function(){
-    return "pending"
+    //return "pending"
 })
