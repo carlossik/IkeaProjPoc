@@ -2,6 +2,7 @@ const { defineConfig } = require('cypress');
 const createBundler = require('@bahmutov/cypress-esbuild-preprocessor');
 const preprocessor = require('@badeball/cypress-cucumber-preprocessor');
 const createEsbuildPlugin = require('@badeball/cypress-cucumber-preprocessor/esbuild');
+const{lighthouse,prepareAudit} = require('@cypress-audit/lighthouse')
 const setupNodeEvents = async (on, config) => {
   await preprocessor.addCucumberPreprocessorPlugin(on, config);
   on('file:preprocessor', createBundler({ plugins: [createEsbuildPlugin.default(config)] }));
@@ -17,7 +18,12 @@ module.exports = defineConfig({
       await preprocessor.addCucumberPreprocessorPlugin(on, config);
       
       on('file:preprocessor', createBundler({ plugins: [createEsbuildPlugin.default(config)] }));
+      on('task',{
+        lighthouse:lighthouse()
+      })
+      //on('before:browser:launch', (browser = {}, launchOptions) => {prepareAudit(launchOptions) return launchOptions});
       on('before:browser:launch', (browser = {}, launchOptions) => {
+        prepareAudit(launchOptions) 
         // `args` is an array of all the arguments that will
         // be passed to browsers when it launches
         console.log(launchOptions.args); // print all current args

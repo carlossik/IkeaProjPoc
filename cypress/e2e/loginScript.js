@@ -9,8 +9,7 @@ class Login{
         client_secret:Cypress.env('PTClientSecret') ,
         username:Cypress.env('PTusername'),
         password:Cypress.env('PTpassword'),
-        audience: 'https://retail.api.ikea.com',
-          
+        audience: 'https://retail.api.ikea.com',  
         },
         Headers:{
             'Content-Type':'application/x-www-form-urlencoded'
@@ -41,7 +40,6 @@ class Login{
         username:Cypress.env('ITusername'),
         password:Cypress.env('ITpassword'),
         audience: 'https://retail.api.ikea.com',
-          
         },
         Headers:{
           'Content-Type':'application/x-www-form-urlencoded'
