@@ -1,4 +1,4 @@
-@audit
+
 Feature: Verify Audit on PT
     Feature conduct accessibility and performance on page
     Background:

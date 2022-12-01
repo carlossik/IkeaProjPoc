@@ -17,11 +17,14 @@ Make sure you have installed all the following prerequisites on your development
 | macOS   | `brew install node@16`                     |
 
 ## Executing The Tests
-You will need to create a file cypress.env.json and have the required 
+
+You will need to create a file cypress.env.json and have the required
 login details to enable the tests to run
+
 - Run the test.
-run the test using cypress runner 
+run the test using cypress runner
  npx cypress open
+
 ```shell
 npm install && npm run test
 ```

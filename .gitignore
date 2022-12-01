@@ -53,4 +53,4 @@ modules.xml
 /cypress/videos/
 /cypress/screenshots
 /cypress/report/
-/cypress/cypress.env.json
+cypress.env.json

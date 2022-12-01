@@ -1,3 +1,4 @@
+/* eslint-disable cypress/no-unnecessary-waiting */
 class Login{
 
       login(){cy.request({
