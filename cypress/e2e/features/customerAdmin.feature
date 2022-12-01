@@ -1,3 +1,4 @@
+@cat
 Feature: Verify CustomerAdmin
 Feature a Customer Admin logs into their account
 Background:

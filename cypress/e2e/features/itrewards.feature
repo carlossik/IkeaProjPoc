@@ -1,3 +1,4 @@
+@italy
 Feature: Verify ITRewards Displayed For User
 Feature a user can see all their rewards
 Background:

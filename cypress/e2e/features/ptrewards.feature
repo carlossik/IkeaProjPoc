@@ -1,3 +1,4 @@
+@portugal
 Feature: Verify Rewards Displayed For User
 Feature a user can see all their rewards
 Background:

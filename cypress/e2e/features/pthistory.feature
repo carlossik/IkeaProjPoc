@@ -1,3 +1,4 @@
+@portugal
 Feature: Verify Rewards History displayed
     Feature a user can see the rewards history including available keys
    

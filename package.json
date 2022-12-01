@@ -26,7 +26,8 @@
   "scripts": {
     "test": "cypress run --e2e --headed --browser chrome --spec **/*.feature",
     "testH": "cypress run --e2e  --browser chrome --spec **/*.feature",
-    "cy:open": "cypress open --e2e --browser chrome"
+    "cy:open": "cypress open --e2e --browser chrome",
+    "testportugal":"npx cypress run -e TAGS='@portugal' --headed --browser=chrome --spec **/*.feature"
   },
   "repository": {
     "type": "git",
