@@ -1,3 +1,5 @@
+/// 
+
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -23,3 +25,14 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+
+  // Cypress.Commands.add('loginViaAPI', (
+  //   email = Cypress.env('PTusername'),
+  //   password = Cypress.env('PTpassword'),
+  //   client_id = Cypress.env('PTClientID'),
+  //   client_secret = Cypress.env('PTClientSecret')
+
+
+
+ 

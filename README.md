@@ -18,21 +18,13 @@ Make sure you have installed all the following prerequisites on your development
 
 ## Executing The Tests
 
-- Clone the repository.
-
-```shell
-
-```
-
-- Change the directory.
-
-```shell
-cd cypress-cucumber-test-example
-```
+You will need to create a file cypress.env.json and have the required
+login details to enable the tests to run
 
 - Run the test.
-run the test using cypress runner 
+run the test using cypress runner
  npx cypress open
+
 ```shell
 npm install && npm run test
 ```
