@@ -4,7 +4,7 @@ Feature: Verify Rewards Displayed For User
     Background:
         Given A User has successfully Logged into rewards page
     Scenario: Cake and Coffee for one is selected
-        Given They select Cake and Coffee for one and click
+        Given  Cake and Coffee for one is selected and clicked
         Then Cake and Coffee for one page is displayed
     Scenario: Cake and Coffee for two is selected
         When They select Cake and Coffee for two and click

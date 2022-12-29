@@ -2,9 +2,9 @@
 Feature: Verify reward amount and Unlock rewards
     Feature a user can unlock rewards when they have enough keys
     Background:
-        Given A User has successfully Logged into rewards page
+        Given A User has successfully Logged into the rewards page
     Scenario: Cake and Coffee for one is selected
-        Given They select Cake and Coffee for one and click
+        When Cake and Coffee for one is selected
         Then Cake and Coffee amount displayed is "25"
     Scenario: Cake and Coffee for two is selected
         When They select Cake and Coffee for two and click
