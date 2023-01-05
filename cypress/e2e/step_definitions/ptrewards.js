@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
 const homePage = require("../../pages/HomePage").default;
@@ -6,14 +7,14 @@ const logUser = require("../loginScript").default;
 Given("A User is already Logged into rewards page", function () {
   logUser.login();
   
-  homePage.clickAcceptCookie
+  homePage.clickAcceptCookie()
 });
 Then("my reward keys should be displayed", function () {
-    homePage.clickAcceptCookie
+    homePage.clickAcceptCookie()
   cy.get("#rewardsGrid").should("be.visible");
 });
 Then("the number of rewards displayed are 10", function () {
-  homePage.verifyRewards;
+  homePage.verifyRewards();
 });
 Then("total Keys are displayed", function () {
   homePage.RewardTotaldisPlayed();
@@ -22,10 +23,10 @@ Then("History button is displayed", function () {
   homePage.RewarHistoryButtonsdisplayed();
 });
 Then("my projects will be displayed", function () {
-  homePage.verifyProjects;
+  homePage.verifyProjects();
 });
 Then("Total number of projects displayed is 4", function () {
-  homePage.verifyNumberOfProjects;
+  homePage.verifyNumberOfProjects();
 });
 Then("How to collect reward keys is displayed", function () {
   homePage.HowToCollectKeysdisplayed();
