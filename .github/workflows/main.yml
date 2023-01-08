@@ -5,7 +5,7 @@ on:
 branches:[Master]
 
 Schedule: 
- -cron: '* * * * *'
+ -cron: '* */6 * * *'
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
