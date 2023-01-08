@@ -2,7 +2,7 @@ name: Cypress Cucumber Test Example
 
 on: 
   push:
-branches:[Master]
+branches:[main]
 
 Schedule: 
  -cron: '* */6 * * *'
