@@ -1,7 +1,11 @@
 name: Cypress Cucumber Test Example
 
-on: [push]
+on: 
+  push:
+branches:[Master]
 
+Schedule: 
+ -cron: '* * * * *'
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
