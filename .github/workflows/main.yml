@@ -1,11 +1,9 @@
 name: Cypress Cucumber Test Example
 
-on: 
-  push:
-branches:[main]
-
-Schedule: 
- -cron: '* */6 * * *'
+on:
+  schedule: 
+# Runs "at 06:00  every day" (see https://crontab.guru)
+    - cron: '0 6 * * *'
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
