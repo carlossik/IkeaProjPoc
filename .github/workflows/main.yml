@@ -3,7 +3,7 @@ name: Cypress Cucumber Test Example
 on:
   schedule: 
 # Runs "at 06:00  every day" (see https://crontab.guru)
-    - cron: '0 6 * * *'
+    - cron: '0 */4 * * *'
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
