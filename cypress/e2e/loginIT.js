@@ -1,3 +1,4 @@
+/* eslint-disable cypress/no-unnecessary-waiting */
 class LoginIT{
 
     loginIT(){cy.request({
@@ -25,7 +26,6 @@ class LoginIT{
             cy.get('#onetrust-accept-btn-handler')
             cy.wait(1000)
             cy.get('#onetrust-accept-btn-handler').click({force:true})
-            cy.wait(1000)
           });
             
       }

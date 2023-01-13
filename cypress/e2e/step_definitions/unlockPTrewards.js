@@ -8,7 +8,7 @@ const logUser = require('../loginScript').default;
 Given('A User has successfully Logged into the rewards page', function (string) {
   return 'pending';
 });
-When('They select Cake and Coffee for one and click', function (string) {
+When('Cake and Coffee for one is selected', function (string) {
   return 'pending';
 });
 Then('Cake and Coffee amount displayed is {string} ', function () {

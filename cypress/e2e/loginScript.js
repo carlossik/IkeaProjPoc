@@ -3,13 +3,13 @@ class Login{
 
       login(){cy.request({
         method: 'POST', 
-    url: Cypress.env('PTauthUrl'), 
+    url: Cypress.env('PT_AUTH_URL'), 
     body: {
         grant_type: 'password',
-        client_id:Cypress.env('PTClientID') ,
-        client_secret:Cypress.env('PTClientSecret') ,
-        username:Cypress.env('PTusername'),
-        password:Cypress.env('PTpassword'),
+        client_id:Cypress.env('PT_CLIENT_ID') ,
+        client_secret:Cypress.env('PT_CLIENT_SECRET') ,
+        username:Cypress.env('PT_USER_NAME'),
+        password:Cypress.env('PT_PASSWORD'),
         audience: 'https://retail.api.ikea.com',  
         },
         Headers:{
@@ -84,6 +84,7 @@ class Login{
             //expect(response.status).to.equal(200);
            // cy.setCookie('idp_reguser', this.value);
             cy.visit('https://private.prod.customeradmin.customer.ingka.com/')
+            cy.get('#username').type(Cypress.env('ITClientID'))
           //});
             
       }
