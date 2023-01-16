@@ -1,4 +1,4 @@
-name: Cypress Cucumber Test Example
+name: RKE-E2E-TESTS-POC
 
 on:
   schedule: 
