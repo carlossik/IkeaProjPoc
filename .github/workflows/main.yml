@@ -3,7 +3,7 @@ name: Cypress Cucumber Test Example
 on:
   schedule: 
 # Runs "at 06:00  every day" (see https://crontab.guru)
-    - cron: '0 */4 * * *'
+    - cron: '0 */6 * * *'
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
@@ -18,10 +18,14 @@ jobs:
         with:
           browser: chrome
           headed: false
-        env:
-           url:${{secrets.PT_AUTH_URL}}
-           client_id:${{secrets.PT_CLIENT_ID}}
-           client_secret:{{secrets.PT_CLIENT_SECRET}}
-           username:{{secrets.PT_USER_NAME}}
-           password:{{secrets.PT_PASSWORD}}
+				env:
+					 url:${{secrets.PT_AUTH_URL}}
+					 client_id:${{secrets.PT_CLIENT_ID}}
+					 client_secret:{{secrets.PT_CLIENT_SECRET}}
+					 username:{{secrets.PT_USER_NAME}}
+					 password:{{secrets.PT_PASSWORD}}
+			 
+			 
+		
+            
            
