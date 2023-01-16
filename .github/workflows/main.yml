@@ -17,12 +17,7 @@ jobs:
         with:
           browser: chrome
           headed: false
-	env:
-          HUB_AUTH_TOKEN: ${{ secrets.HUB_AUTH_TOKEN }}
-          HUB_BASE_URL: ${{ secrets.HUB_BASE_URL }}
-          HUB_PROJECTUID: ${{ secrets.HUB_PROJECTUID }}
-          TEST_NODE_ID: ${{ secrets.TEST_NODE_ID }}
-	  run-name: ${{ secrets.TEST1_NODE_ID }}
+	
 	
 	 
 	  
