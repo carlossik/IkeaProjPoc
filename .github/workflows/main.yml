@@ -1,9 +1,9 @@
 name: RKE-E2E-TESTS-POC
 
 on:
-  schedule: 
-# Runs "at 06:00  every day" (see https://crontab.guru)
-    - cron: '0 */6 * * *'
+  schedule:
+    # Runs "at 06:00  every day" (see https://crontab.guru)
+    - cron: "0 */6 * * *"
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
@@ -17,11 +17,9 @@ jobs:
         with:
           browser: chrome
           headed: false
-	
-	
-	 
-	  
-			 
-		
-            
-           
+    env:
+      PT_CLIENT_ID: ${{ secrets.PT_CLIENT_ID }}
+      PT_AUTH_URL: ${{ secrets.PT_AUTH_URL }}
+      PT_CLIENT_SECRET: ${{ secrets.PT_CLIENT_SECRET }}
+      PT_USER_NAME: ${{ secrets.PT_USER_NAME }}
+      PT_PASSWORD: ${{secrets.PT_PASSWORD }}
