@@ -18,12 +18,12 @@ jobs:
         with:
           browser: chrome
           headed: false
-				env:
-					 url:${{secrets.PT_AUTH_URL}}
-					 client_id:${{secrets.PT_CLIENT_ID}}
-					 client_secret:{{secrets.PT_CLIENT_SECRET}}
-					 username:{{secrets.PT_USER_NAME}}
-					 password:{{secrets.PT_PASSWORD}}
+	env:
+	  url:${{secrets.PT_AUTH_URL}}
+	  client_id:${{secrets.PT_CLIENT_ID}}
+	  client_secret:{{secrets.PT_CLIENT_SECRET}}
+	  username:{{secrets.PT_USER_NAME}}
+	  password:{{secrets.PT_PASSWORD}}
 			 
 			 
 		
