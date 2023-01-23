@@ -1,14 +1,12 @@
 on: schedule
-name: E2E test results Slack Notification 
+name: Slack Notification 
 jobs:
   slackNotification:
     name: Slack Notification
     runs-on: ubuntu-latest
     steps:
-    
+    - uses: actions/checkout@v2
     - name: Slack Notification
-      run: |
-         curl -X POST -H 'Content-type:application/json'
-         --data '{"text":"E2E test results"}'${{secrets.SLACK_WEBHOOK}}
-      
-        
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
