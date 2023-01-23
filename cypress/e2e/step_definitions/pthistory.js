@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
 const homePage = require("../../pages/HomePage").default;

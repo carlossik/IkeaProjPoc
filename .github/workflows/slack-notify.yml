@@ -1,0 +1,14 @@
+on: schedule
+name: E2E test results Slack Notification 
+jobs:
+  slackNotification:
+    name: Slack Notification
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Slack Notification
+      run: |
+         curl -X POST -H 'Content-type:application/json'
+         --data '{"text":"E2E test results"}'${{secrets.SLACK_WEBHOOK}}
+      
+        

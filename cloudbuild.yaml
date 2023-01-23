@@ -1,0 +1,243 @@
+options:
+  env:
+    - 'CI=true'
+
+timeout: 900s
+
+steps:
+  - name: 'gcr.io/cloud-builders/git'
+    secretEnv: ['SSH_KEY']
+    entrypoint: 'bash'
+    args:
+    - -e
+    - -c
+    - |
+      echo "$$SSH_KEY" >> /root/.ssh/id_rsa
+      chmod 400 /root/.ssh/id_rsa
+      ssh-keyscan -t rsa github.com > known_hosts.github
+      cp known_hosts.github /root/.ssh/known_hosts
+    volumes:
+    - name: 'ssh'
+      path: /root/.ssh
+
+  - name: gcr.io/cloud-builders/git
+    id: 'Configure origin'
+    args:
+      - remote
+      - set-url
+      - origin
+      - git@github.com:ingka-group-digital/Rke-E2E-Tests-POC
+    volumes:
+    - name: 'ssh'
+      path: /root/.ssh
+
+  - name: gcr.io/cloud-builders/git
+    id: 'Unshallow'
+    args:
+      - fetch
+      - --unshallow
+      - git@github.com:ingka-group-digital/Rke-E2E-Tests-POC
+    volumes:
+    - name: 'ssh'
+      path: /root/.ssh
+
+  - name: gcr.io/cloud-builders/git
+    id: 'Fetch origin'
+    args:
+      - fetch
+      - origin
+    volumes:
+    - name: 'ssh'
+      path: /root/.ssh
+
+  - name: 'gcr.io/cloud-builders/git'
+    id: 'Checkout branch'
+    args:
+    - checkout
+    - $BRANCH_NAME
+
+  - name: node:18.12.0
+    id: 'Set npm registries'
+    entrypoint: bash
+    args:
+      - '-e'
+      - '-c'
+      - |
+        npm set @rl:registry https://artifactory.build.ingka.ikea.com/artifactory/api/npm/rewards-loyalty-npm-release-local/
+        npm set @rke:registry https://artifactory.build.ingka.ikea.com/artifactory/api/npm/rewards-loyalty-npm-release-local/
+        npm set @ingka:registry https://npm.m2.blue.cdtapps.com
+
+  - name: node:18.12.0
+    id: 'Authenticate towards artifactory'
+    entrypoint: 'bash'
+    args:
+      - '-e'
+      - '-c'
+      - |
+        curl -u $$ARTIFACTORY_USERNAME:$$ARTIFACTORY_PASSWORD https://artifactory.build.ingka.ikea.com/artifactory/api/npm/auth >> ~/.npmrc
+    secretEnv: ['ARTIFACTORY_USERNAME', 'ARTIFACTORY_PASSWORD']
+
+  - name: node:18.12.0
+    id: 'Install packages'
+    entrypoint: yarn
+    args: ['install', '--frozen-lockfile']
+
+  - name: node:18.12.0
+    id: 'Lint'
+    entrypoint: yarn
+    args: ['lint']
+
+  - name: gittools/gitversion
+    id: 'Gitversion'
+    args: ['/output', 'file', '/outputfile', 'gitVersion.json']
+    secretEnv: ['GH_TOKEN']
+
+  - name: node:18.12.0
+    id: 'Get version'
+    entrypoint: 'bash'
+    args:
+      - '-e'
+      - '-c'
+      - |
+        apt update
+        apt install jq -y
+        VERSION=$(jq -r '.SemVer' gitVersion.json)
+        echo $$VERSION
+        echo $$VERSION > version.json
+        cat version.json
+
+  - name: node:18.12.0
+    id: 'Set package version'
+    entrypoint: 'bash'
+    args:
+      - '-e'
+      - '-c'
+      - |
+        VERSION=$(cat version.json)
+        echo $$VERSION
+        echo "Setting the yarn version..."
+        yarn version  --new-version $$VERSION --no-git-tag-version
+
+  - name: node:18.12.0
+    id: 'Build'
+    entrypoint: yarn
+    args: ['build']
+
+  - name: node:18.12.0
+    id: 'Tests'
+    entrypoint: yarn
+    args: ['test']
+
+  - name: node:18.12.0
+    id: 'Publish'
+    entrypoint: 'bash'
+    args:
+      - '-e'
+      - '-c'
+      - |
+        VERSION=$(cat version.json)
+        echo $$VERSION
+        git config --global user.email "cicd-rewards@ingka.ikea.com"
+        git config --global user.name "cicd-rewards"
+        echo "Check if remote git tag already exists..."
+        TAG_EXISTS=$(git ls-remote origin  refs/tags/$$VERSION)
+        echo "Remote tag: " $$TAG_EXISTS
+        if [ -z "$$TAG_EXISTS" ]
+        then
+          echo "Remote tag does not exist"
+          echo "Publishing tags..."
+          git tag $$VERSION
+          git push --tags
+        else
+          echo "Remote tag already exists, skipping pushing git tag"
+        fi
+        echo "Check if package already exists in artifactory..."
+        echo "Setting the registry"
+        npm set @rl:registry https://artifactory.build.ingka.ikea.com/artifactory/api/npm/rewards-loyalty-npm-dev-local/
+        PACKAGE_IS_UPLOADED=$(npm view @rl/faq@$$VERSION)
+        echo "Package is uploaded->" $$PACKAGE_IS_UPLOADED
+        if [ -z "$$PACKAGE_IS_UPLOADED" ]
+        then
+          echo "Publishing package to artifactory..."
+          yarn publish
+        else
+          echo "Package is already uploaded"
+        fi
+    volumes:
+    - name: 'ssh'
+      path: /root/.ssh
+
+  - id: 'Terragrunt plan & apply'
+    name: 'alpine/terragrunt:0.15.3'
+    entrypoint: 'sh'
+    secretEnv: ['INFRA_SSH_KEY', 'MODULES_SSH_KEY', 'ARTIFACTORY_USERNAME', 'ARTIFACTORY_PASSWORD']
+    args:
+    - '-e'
+    - '-c'
+    - |
+          VERSION=$(cat version.json)
+          mkdir -p "/root/.ssh"
+          echo "$$INFRA_SSH_KEY" >> /root/.ssh/id_rsa_infrastructure
+          echo "$$MODULES_SSH_KEY" >> /root/.ssh/id_rsa
+          chmod 400 /root/.ssh/id_rsa_infrastructure
+          chmod 400 /root/.ssh/id_rsa
+          ssh-keyscan -t rsa github.com > /root/.ssh/known_hosts
+          echo -e "$(sed s/https/http/ig /etc/apk/repositories)" > /etc/apk/repositories
+          apk update
+          apk add jq curl
+          echo -e "Host github.com\n  Hostname github.com\n  IdentityFile=/root/.ssh/id_rsa\n" > /root/.ssh/config
+          echo -e "Host github.com-repo-infra\n  Hostname github.com\n  IdentityFile=/root/.ssh/id_rsa_infrastructure\n" >> /root/.ssh/config
+          git clone git@github.com-repo-infra:ingka-group-digital/rl-infrastructure.git infra
+          cd infra/environments/dev/faq
+          echo app_version=\"$$VERSION\" > ./rewards.tfvars
+          terragrunt plan -var artifactory_password=$$ARTIFACTORY_PASSWORD -var artifactory_username=$$ARTIFACTORY_USERNAME
+          terragrunt apply -auto-approve -var artifactory_password=$$ARTIFACTORY_PASSWORD -var artifactory_username=$$ARTIFACTORY_USERNAME
+
+  - name: 'gcr.io/cloud-builders/git'
+    id: 'commit dev infra state'
+    entrypoint: 'bash'
+    secretEnv: ['INFRA_SSH_KEY']
+    args:
+    - '-e'
+    - '-c'
+    - |
+          VERSION=$(cat version.json)
+          mkdir -p "/root/.ssh"
+          echo "$$INFRA_SSH_KEY" >> /root/.ssh/id_rsa
+          chmod 400 /root/.ssh/id_rsa
+          echo -e "Host github.com-repo-infra\n  Hostname github.com\n  IdentityFile=/root/.ssh/id_rsa\n" >> /root/.ssh/config
+          ssh-keyscan -t rsa github.com > /root/.ssh/known_hosts
+          cd /workspace/infra
+          git config user.name terragrunt
+          git config user.email '<>'
+          git add environments/dev/faq/rewards.tfvars
+          git commit -m "[AUTOMATED] version: $$VERSION, env: DEV, module: FE faq"
+          git stash
+          git pull --rebase origin main
+          git push origin main
+
+  - name: cypress/browsers:18.12.0-chrome89-ff86
+    id: 'Cypress tests'
+    entrypoint: 'bash'
+    args:
+      - '-e'
+      - '-c'
+      - |
+        CYPRESS_BASE_URL=https://storage.googleapis.com/Rke-E2E-Tests-POC yarn cypress:run
+
+tags: ['faq', 'FE']
+
+availableSecrets:
+  secretManager:
+  - versionName: projects/ingka-ce-loyalty-dev/secrets/GH_TOKEN/versions/latest
+    env: 'GH_TOKEN'
+  - versionName: projects/ingka-ce-loyalty-dev/secrets/ARTIFACTORY_USERNAME/versions/latest
+    env: 'ARTIFACTORY_USERNAME'
+  - versionName: projects/ingka-ce-loyalty-dev/secrets/ARTIFACTORY_PASSWORD/versions/latest
+    env: 'ARTIFACTORY_PASSWORD'
+  - versionName: projects/ingka-ce-loyalty-dev/secrets/GITHUB_SSH_KEY_FAQ/versions/latest
+    env: 'SSH_KEY'
+  - versionName: projects/ingka-ce-loyalty-dev/secrets/INFRASTRUCTURE_REPO_KEY/versions/latest
+    env: 'INFRA_SSH_KEY'
+  - versionName: projects/ingka-ce-loyalty-dev/secrets/MODULES_REPO_KEY/versions/latest
+    env: 'MODULES_SSH_KEY'

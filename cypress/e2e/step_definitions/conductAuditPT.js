@@ -1,6 +1,6 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
-const homePage = require("../../pages/HomePage").default;
+
 const logUser = require("../loginScript").default;
 
 Given("I am logged into acount", function () {
