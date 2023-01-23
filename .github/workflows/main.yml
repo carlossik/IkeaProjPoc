@@ -17,9 +17,9 @@ jobs:
         with:
           browser: chrome
           headed: false
-    env:
-       PT_CLIENT_ID: ${{ secrets.PT_CLIENT_ID }}
-       PT_AUTH_URL: ${{ secrets.PT_AUTH_URL }}
-       PT_CLIENT_SECRET: ${{ secrets.PT_CLIENT_SECRET }}
-       PT_USER_NAME: ${{ secrets.PT_USER_NAME }}
-       PT_PASSWORD: ${{secrets.PT_PASSWORD }}
+        env:
+           PT_CLIENT_ID: ${{ secrets.PT_CLIENT_ID }}
+           PT_AUTH_URL: ${{ secrets.PT_AUTH_URL }}
+           PT_CLIENT_SECRET: ${{ secrets.PT_CLIENT_SECRET }}
+           PT_USER_NAME: ${{ secrets.PT_USER_NAME }}
+           PT_PASSWORD: ${{secrets.PT_PASSWORD }}
