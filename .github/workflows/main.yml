@@ -17,9 +17,10 @@ jobs:
         with:
           browser: chrome
           headed: false
-        env:
-           CYPRESS_PT_CLIENT_ID: ${{ secrets.PT_CLIENT_ID }}
-           CYPRESS_PT_AUTH_URL: ${{ secrets.PT_AUTH_URL }}
-           CYPRESS_PT_CLIENT_SECRET: ${{ secrets.PT_CLIENT_SECRET }}
-           CYPRESS_PT_USER_NAME: ${{ secrets.PT_USER_NAME }}
-           CYPRESS_PT_PASSWORD: ${{secrets.PT_PASSWORD }}
+
+    env:
+       CYPRESS_PT_CLIENT_ID: ${{ secrets.PT_CLIENT_ID }}
+       CYPRESS_PT_AUTH_URL: ${{ secrets.PT_AUTH_URL }}
+       CYPRESS_PT_CLIENT_SECRET: ${{ secrets.PT_CLIENT_SECRET }}
+       CYPRESS_PT_USER_NAME: ${{ secrets.PT_USER_NAME }}
+       CYPRESS_PT_PASSWORD: ${{secrets.PT_PASSWORD }}
