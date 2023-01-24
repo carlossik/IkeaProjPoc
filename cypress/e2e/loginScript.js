@@ -18,8 +18,6 @@ class Login{
          }).then(function(response){
             this.value = response.body.access_token;
             cy.log("Value "+this.value);
-    
-           
             expect(response.status).to.equal(200);
             cy.setCookie('idp_reguser', this.value);
             cy.visit('https://www.ikea.com/pt/en/loyalty-hub/')
