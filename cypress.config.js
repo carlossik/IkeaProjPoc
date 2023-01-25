@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const { defineConfig } = require('cypress');
 const createBundler = require('@bahmutov/cypress-esbuild-preprocessor');
 const preprocessor = require('@badeball/cypress-cucumber-preprocessor');
@@ -66,5 +67,20 @@ module.exports = defineConfig({
       step_definitions: 'cypress/e2e/**/*.{cy,js,ts}',
       ///excludeSpecPattern: ['*.js'],
     },
-  },
+    env: {
+      "pt_username": `${process.env.PT_USER_NAME}`,
+      "pt_password":`${process.env.PT_PASSWORD}`,
+      "itusername":`${process.env.IT_USER_NAME}`,
+      "itpassword":`${process.env.IT_PASSWORD}`,
+      "pturl": `${process.env.PTURL}`,
+      "pt_auth_url":`${process.env.PT_AUTH_URL}`,
+      "pt_client_id": `${process.env.PT_CLIENT_ID}`,
+      "pt_client_secret": `${process.env.PT_CLIENT_SECRET}`,
+      "itauthurl":`${process.env.IT_AUTH_URL}`,
+      "itclientid": `${process.env.IT_CLIENT_ID}`,
+      "itclientsecret": `${process.env.IT_CLIENT_SECRET}`,
+      "iturl": `${process.env.ITURL}`
+     
+    }
+  }
 });
