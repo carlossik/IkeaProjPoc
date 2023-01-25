@@ -1,6 +1,7 @@
 
 
-on: schedule
+on: workflow_dispatch
+    
 name: End to End test report
 jobs:
   slackNotification:
