@@ -68,18 +68,18 @@ module.exports = defineConfig({
       ///excludeSpecPattern: ['*.js'],
     },
     env: {
-      "PT_USER_NAME": "sapt99@mailinator.com",
-      "PT_PASSWORD":`${process.env.CYPRESS_PT_PASSWORD}`,
-      "ITuserName":"sait1@mailinator.com",
-      "ITpassWord":"Sample123!",
-      "PTURL": "https://www.ikea.com/pt/en",
-      "PT_AUTH_URL":"https://pt.accounts.ikea.com/oauth/token",
-      "PT_CLIENT_ID": "5ylUcKnvwzRJTN7Ieguw26jtwfaUSQzR",
-      "PT_CLIENT_SECRET": "x55QDagwC_aW2MvNdlmEmoxxBMNJzY2nDE-xNGanbdHJJ_0-kL2gO_kR57ha9Wy9",
-      "ITauthUrl":"https://it.accounts.ikea.com/oauth/token",
-      "ITClientID": "WlOGA2kjqvo8ZvRoDQu1bQtoQV7ODyqu",
-      "ITClientSecret": "QEtSGLA6LFFTXvB6krkyA-GDNQj6Up7q81aYYuOt6h9GfMDp8hZtipNItMNl6sGE",
-      "ITURL": "https://www.ikea.com/it/en"
+      "pt_username": `${process.env.PT_USER_NAME}`,
+      "pt_password":`${process.env.PT_PASSWORD}`,
+      "itusername":`${process.env.IT_USER_NAME}`,
+      "itpassword":`${process.env.IT_PASSWORD}`,
+      "pturl": `${process.env.PTURL}`,
+      "pt_auth_url":`${process.env.PT_AUTH_URL}`,
+      "pt_client_id": `${process.env.PT_CLIENT_ID}`,
+      "pt_client_secret": `${process.env.PT_CLIENT_SECRET}`,
+      "itauthurl":`${process.env.IT_AUTH_URL}`,
+      "itclientid": `${process.env.IT_CLIENT_ID}`,
+      "itclientsecret": `${process.env.IT_CLIENT_SECRET}`,
+      "iturl": `${process.env.ITURL}`
      
     }
   }

@@ -27,6 +27,6 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         with:
           env:
-            SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
-            SLACK_TITLE: END TO END TESTS REPORT
-            SLACK_MESSAGE: "THIS IS THE END TO END TEST REPORT:rocket"
+              SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
+              SLACK_TITLE: END TO END TESTS REPORT
+              SLACK_MESSAGE: "THIS IS THE END TO END TEST REPORT:rocket"
