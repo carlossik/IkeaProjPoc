@@ -54,3 +54,4 @@ modules.xml
 /cypress/screenshots
 /cypress/report/
 cypress.env.json
+setenv.sh
