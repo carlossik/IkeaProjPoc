@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+    - uses: actions/checkout@master
     - name: Cypress run
-       uses:cypress-io/github-action@v4
     - with:
        browser: chrome
        headed: false
