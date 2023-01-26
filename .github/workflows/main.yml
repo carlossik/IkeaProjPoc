@@ -3,33 +3,30 @@ name: RKE-E2E-TESTS-POC
 on:
   schedule:
     # Runs "at 06:00  every day" (see https://crontab.guru)
-    - cron: "*/2 * * * *"
+    - cron: "0 */1 * * *"
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-    container:
-      image: cypress/browsers:node16.16.0-chrome105-ff99-edge
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Cypress run
-        uses: cypress-io/github-action@v4
-        with:
-          browser: chrome
-          headed: false
-          env:
+    - uses: actions/checkout@master
+    - name: Cypress run
+        uses:cypress-io/github-action@v4
+      env:
             PT_CLIENT_ID: ${{secrets.PT_CLIENT_ID}}
             PT_AUTH_URL: ${{secrets.PT_AUTH_URL}}
             PT_CLIENT_SECRET: ${{secrets.PT_CLIENT_SECRET}}
             PT_USER_NAME: ${{secrets.PT_USER_NAME}}
             PT_PASSWORD: ${{secrets.PT_PASSWORD}}
-      - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2
-        with:
-          env:
-              SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
-              SLACK_TITLE: END TO END TESTS REPORT
-              SLACK_MESSAGE: "THIS IS THE END TO END TEST REPORT:rocket"
+      with:
+        browser: chrome
+        headed: false
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
+        SLACK_TITLE: END TO END TESTS REPORT
+        SLACK_MESSAGE: "THIS IS THE END TO END TEST REPORT:rocket"
+      
 
 
     
