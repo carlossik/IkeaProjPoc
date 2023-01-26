@@ -3,7 +3,7 @@ class Login{
 
       login(){cy.request({
         method: 'POST', 
-    url: Cypress.env('PT_AUTH_URL'), 
+    url: ('https://pt.accounts.ikea.com/oauth/token'), 
     body: {
         grant_type: 'password',
         client_id:Cypress.env('PT_CLIENT_ID') ,
