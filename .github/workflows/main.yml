@@ -10,16 +10,16 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Cypress run
-        uses:cypress-io/github-action@v4
+       uses:cypress-io/github-action@v4
+    - with:
+       browser: chrome
+       headed: false
       env:
-            PT_CLIENT_ID: ${{secrets.PT_CLIENT_ID}}
-            PT_AUTH_URL: ${{secrets.PT_AUTH_URL}}
-            PT_CLIENT_SECRET: ${{secrets.PT_CLIENT_SECRET}}
-            PT_USER_NAME: ${{secrets.PT_USER_NAME}}
-            PT_PASSWORD: ${{secrets.PT_PASSWORD}}
-      with:
-        browser: chrome
-        headed: false
+        PT_CLIENT_ID: ${{ secrets.PT_CLIENT_ID }}
+        PT_AUTH_URL: ${{ secrets.PT_AUTH_URL }}
+        PT_CLIENT_SECRET: ${{ secrets.PT_CLIENT_SECRET }}
+        PT_USER_NAME: ${{ secrets.PT_USER_NAME }}
+        PT_PASSWORD: ${{secrets.PT_PASSWORD }}
     - name: Slack Notification
       uses: rtCamp/action-slack-notify@v2
       env:
