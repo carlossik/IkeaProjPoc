@@ -18,11 +18,11 @@ jobs:
           browser: chrome
           headed: false
           env:
-            PT_CLIENT_ID: ${{ secrets.PT_CLIENT_ID }}
-            PT_AUTH_URL: ${{ secrets.PT_AUTH_URL }}
-            PT_CLIENT_SECRET: ${{ secrets.PT_CLIENT_SECRET }}
-            PT_USER_NAME: ${{ secrets.PT_USER_NAME }}
-            PT_PASSWORD: ${{secrets.PT_PASSWORD }}
+            CYPRESS_PTClientID: ${{ secrets.PT_CLIENT_ID }}
+            url: ${{ secrets.PT_AUTH_URL }}
+            CYPRESS_PTClientSecret: ${{ secrets.PT_CLIENT_SECRET }}
+            CYPRESS_PTusername: ${{ secrets.PT_USER_NAME }}
+            CYPRESS_PTpassword: ${{secrets.PT_PASSWORD }}
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         with:

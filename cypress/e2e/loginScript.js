@@ -3,13 +3,13 @@ class Login{
 
       login(){cy.request({
         method: 'POST', 
-    url: ('https://pt.accounts.ikea.com/oauth/token'), 
+    url: Cypress.env('CYPRESS_PTauthUrl') ,
     body: {
         grant_type: 'password',
-        client_id:Cypress.env('PT_CLIENT_ID') ,
-        client_secret:Cypress.env('PT_CLIENT_SECRET') ,
-        username:Cypress.env('PT_USER_NAME'),
-        password:Cypress.env('PT_PASSWORD'),
+        client_id:Cypress.env('CYPRESS_PTClientID') ,
+        client_secret:Cypress.env('CYPRESS_PTClientSecret') ,
+        username:Cypress.env('CYPRESS_PTusername'),
+        password:Cypress.env('CYPRESS_PTpassword'),
         audience: 'https://retail.api.ikea.com',  
         },
         Headers:{
