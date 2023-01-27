@@ -1,9 +1,10 @@
 name: RKE-E2E-TESTS-POC
 
 on:
+  workflow_dispatch:
   schedule:
-    # Runs "at 06:00  every day" (see https://crontab.guru)
-    - cron: "0 */6 * * *"
+     #Runs "every hour" (see https://crontab.guru)
+    - cron: "0 */1 * * *"
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
@@ -22,14 +23,14 @@ jobs:
             url: ${{ secrets.PT_AUTH_URL }}
             CYPRESS_PTClientSecret: ${{ secrets.PT_CLIENT_SECRET }}
             CYPRESS_PTusername: ${{ secrets.PT_USER_NAME }}
-            CYPRESS_PTpassword: ${{secrets.PT_PASSWORD }}
+            CYPRESS_PTpassword: ${{secrets.PT_PASSWORD }}      
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
-        with:
-          env:
-              SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
-              SLACK_TITLE: END TO END TESTS REPORT
-              SLACK_MESSAGE: "THIS IS THE END TO END TEST REPORT:rocket"
+        env:
+          SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
+          SLACK_TITLE: END TO END TESTS REPORT
+          SLACK_MESSAGE: "THIS IS THE END TO END TEST REPORT:rocket"
+      
 
 
     
