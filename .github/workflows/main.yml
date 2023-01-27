@@ -20,7 +20,7 @@ jobs:
           headed: false
         env:
           CYPRESS_PTClientID: ${{ secrets.PT_CLIENT_ID }}
-          url: ${{ secrets.PT_AUTH_URL }}
+          CYPRESS_PTauthUrl: ${{ secrets.PT_AUTH_URL }}
           CYPRESS_PTClientSecret: ${{ secrets.PT_CLIENT_SECRET }}
           CYPRESS_PTusername: ${{ secrets.PT_USER_NAME }}
           CYPRESS_PTpassword: ${{secrets.PT_PASSWORD }}      
