@@ -6,7 +6,7 @@ const homePage = require("../../pages/HomePage").default;
 const logUser = require("../loginIT").default;
 
 Given("A ITUser is already Logged into rewards page", function () {
-  logUser.loginIT();
+  cy.loginIT();
   homePage.clickAcceptCookie
 });
 Then("my ITreward keys should be displayed", function () {

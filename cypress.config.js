@@ -59,12 +59,15 @@ module.exports = defineConfig({
     defaultCommandTimeout: 20000,
     chromeWebSecurity: false,
     fixturesFolder: false,
-    supportFile: 'cypress/support/e2e.{js,jsx,ts,tsx}',
+    //supportFile: 'cypress/support/e2e.{js,jsx,ts,tsx}',
+    supportFile: "cypress/support/e2e.js",
     e2e: {
       setupNodeEvents,
       specPattern: "cypress/e2e/features/*.feature",
       baseUrl: 'https://www.ikea.com/pt/en/', //profile/login/',
       step_definitions: 'cypress/e2e/**/*.{cy,js,ts}',
+      userAgent: null
+    
       ///excludeSpecPattern: ['*.js'],
     },
     env: {
