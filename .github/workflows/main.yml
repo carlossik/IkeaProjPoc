@@ -11,6 +11,8 @@ jobs:
     container:
       image: cypress/browsers:node16.16.0-chrome105-ff99-edge
     steps:
+      - name: Upgrade packages
+        run: npm update
       - name: Checkout
         uses: actions/checkout@v3
       - name: Cypress run
