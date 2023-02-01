@@ -6,7 +6,7 @@ const logUser = require("../loginScript").default;
 
 
 Given("A user is already Logged into rewards page",function(){
-    logUser.login()
+    cy.loginPT();
 
 });
 Then("They can see available keys",function(){

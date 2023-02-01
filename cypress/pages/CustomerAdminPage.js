@@ -1,15 +1,16 @@
+/* eslint-disable no-unused-vars */
 class CustomerAdminPage{
 
 elements = {
     retailUnitDropdown:() => cy.get('.retailUnitDropdown'),
-    retailUnitPT:()=> retailUnitDropdown.select('pt'),
-    retailUnitIT:() => retailUnitDropdown.select('it'),
+    retailUnitPT:()=>cy.get('.retailUnitDropdown').select('pt'),
+    retailUnitIT:() => cy.get('.retailUnitDropdown').select('it'),
     CustomerSearchBar:() => cy.get('.searchCustomer'),
-    SearchWithLoginId:() => CustomerSearchBar.select('loginId'),
-    SearchWithEmail:() => CustomerSearchBar.select('contactEmail'),
-    SearchWithCardNumber:() => CustomerSearchBar.select('cardNumber'),
-    SearchWithTransactionalID:() => CustomerSearchBar.select('transactionalId'),
-    SearchWithPhoneNumnber:() => CustomerSearchBar.select('contactPhone')
+    SearchWithLoginId:() => cy.get('.retailUnitDropdown').select('loginId'),
+    SearchWithEmail:() => cy.get('.retailUnitDropdown').select('contactEmail'),
+    SearchWithCardNumber:() => cy.get('.retailUnitDropdown').select('cardNumber'),
+    SearchWithTransactionalID:() => cy.get('.retailUnitDropdown').select('transactionalId'),
+    SearchWithPhoneNumnber:() => cy.get('.retailUnitDropdown').select('contactPhone')
 
 }
 

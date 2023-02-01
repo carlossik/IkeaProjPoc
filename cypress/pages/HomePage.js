@@ -1,3 +1,5 @@
+/* eslint-disable no-extra-semi */
+/* eslint-disable no-unused-vars */
 class HomePage {
 
     ProjectsDisplayed(){

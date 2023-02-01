@@ -10,7 +10,7 @@ class Login{
         client_secret:Cypress.env('CYPRESS_PTClientSecret') ,
         username:Cypress.env('CYPRESS_PTusername'),
         password:Cypress.env('CYPRESS_PTpassword'),
-        audience: 'https://retail.api.ikea.com',  
+        audience: 'https://retail.api.ikea.com'  
         },
         Headers:{
             'Content-Type':'application/x-www-form-urlencoded'
@@ -18,7 +18,6 @@ class Login{
          }).then(function(response){
             this.value = response.body.access_token;
             cy.log("Value "+this.value);
-    
            
             expect(response.status).to.equal(200);
             cy.setCookie('idp_reguser', this.value);
@@ -42,9 +41,10 @@ class Login{
         password:Cypress.env('ITpassword'),
         audience: 'https://retail.api.ikea.com',
         },
-        Headers:{
-          'Content-Type':'application/x-www-form-urlencoded'
-       }
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      
       }).then(function(response){
         this.value = response.body.access_token;
         cy.log("Value "+this.value);

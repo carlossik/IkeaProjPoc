@@ -1,11 +1,13 @@
+/* eslint-disable chai-friendly/no-unused-expressions */
 /* eslint-disable no-unused-vars */
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
 const homePage = require("../../pages/HomePage").default;
 const logUser = require("../loginScript").default;
+const signin = require("../login2").default;
 
 Given("A User is already Logged into rewards page", function () {
-  logUser.login();
+  cy.loginPT();
   
   homePage.clickAcceptCookie()
 });
