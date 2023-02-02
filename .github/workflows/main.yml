@@ -13,6 +13,8 @@ jobs:
         run: npm install @badeball/cypress-cucumber-preprocessor
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Cypress install
+        run: npm install --legacy-peer-deps
       - name: Cypress run
         uses: cypress-io/github-action@v5.0.7
         with:
