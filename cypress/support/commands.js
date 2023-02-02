@@ -56,7 +56,7 @@ Cypress.Commands.add("loginPT", () => {
           cy.wait(1000)
         });
     })
-    Cypress.Commands.add("CYPRESS_loginIT", () => {
+    Cypress.Commands.add("loginIT", () => {
       cy.request({
         method: 'POST',
         url: Cypress.env('CYPRESS_ITauthUrl'),
