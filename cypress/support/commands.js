@@ -32,7 +32,7 @@
 Cypress.Commands.add("loginPT", () => {
     cy.request({
       method: 'POST',
-      url: Cypress.env('CYPRESS_PTauthUrl'),
+      url: ('https://pt.accounts.ikea.com/oauth/token'),
       headers: {
         'content-type':'application/x-www-form-urlencoded'          
       },
@@ -59,7 +59,7 @@ Cypress.Commands.add("loginPT", () => {
     Cypress.Commands.add("loginIT", () => {
       cy.request({
         method: 'POST',
-        url: Cypress.env('CYPRESS_ITauthUrl'),
+        url: ('https://it.accounts.ikea.com/oauth/token'),
         headers: {
           'content-type':'application/x-www-form-urlencoded'          
         },
