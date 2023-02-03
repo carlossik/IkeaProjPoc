@@ -21,6 +21,7 @@ jobs:
           install: false
           browser: chrome
           headed: false
+          env: true
         env:
           client_id: ${{ secrets.CYPRESS_PT_CLIENT_ID }}
           CYPRESS_PTauthUrl: ${{ secrets.CYPRESS_PT_AUTH_URL }}
