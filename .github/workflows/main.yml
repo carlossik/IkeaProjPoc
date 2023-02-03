@@ -8,22 +8,36 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-    container:
-      image: cypress/browsers:node16.16.0-chrome105-ff99-edge
     steps:
+      - name: Upgrade packages
+        run: npm install @badeball/cypress-cucumber-preprocessor
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Cypress run
-        uses: cypress-io/github-action@v4
+      - name: Cypress install
+        run: npm install --legacy-peer-deps
+      - name: create the cypress.env.json file
+        id: create-json
+        uses: jsdaniell/create-json@1.1.2
         with:
+          name: "cypress.env.json"
+          json: ${{ secrets.CYPRESS_ENV_CI }}
+        # use quotes around the secret, as its value
+        # is simply inserted as a string into the command
+        #run: |
+         # echo ${{ secrets.CYPRESS_ENV_CI }} | base64 -d > Cypress.env.json
+      - name: Cypress run
+        uses: cypress-io/github-action@v5.0.7
+        with:
+          install: false
           browser: chrome
           headed: false
+          env: true
         env:
-          CYPRESS_PTClientID: ${{ secrets.PT_CLIENT_ID }}
-          CYPRESS_PTauthUrl: ${{ secrets.PT_AUTH_URL }}
-          CYPRESS_PTClientSecret: ${{ secrets.PT_CLIENT_SECRET }}
-          CYPRESS_PTusername: ${{ secrets.PT_USER_NAME }}
-          CYPRESS_PTpassword: ${{secrets.PT_PASSWORD }}      
+          client_id: ${{ secrets.CYPRESS_PT_CLIENT_ID }}
+          CYPRESS_PTauthUrl: ${{ secrets.CYPRESS_PT_AUTH_URL }}
+          client_secret: ${{ secrets.CYPRESS_PT_CLIENT_SECRET }}
+          username: ${{ secrets.CYPRESS_PT_USER_NAME }}
+          password: ${{secrets.CYPRESS_PT_PASSWORD }}      
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:

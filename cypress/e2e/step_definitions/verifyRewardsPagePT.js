@@ -3,11 +3,11 @@ import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
 const homePage = require("../../pages/HomePage").default;
 const RewardsPage = require("../../pages/RewardsPage").default;
-const logUser = require("../loginScript").default;
+//const logUser = require("../loginScript").default;
 
 
 Given("A User has successfully Logged into rewards page", function () {
-  logUser.login();
+  cy.loginPT();
 });
 When("Cake and Coffee for one is selected and clicked", function () {
   cy.get('#rewards-reward-4989 > .rewards__rewards__inner').click({ fore: true });

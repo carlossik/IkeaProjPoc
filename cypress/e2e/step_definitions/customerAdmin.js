@@ -2,7 +2,7 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
 const adminPage = require("../../pages/CustomerAdminPage").default;
-const logUser = require("../loginScript").default;
+//const logUser = require("../loginScript").default;
 
 
 Given("A Customer admin is logged into their account", function () {

@@ -32,16 +32,16 @@
 Cypress.Commands.add("loginPT", () => {
     cy.request({
       method: 'POST',
-      url: Cypress.env('PTauthUrl'),
+      url: ('https://pt.accounts.ikea.com/oauth/token'),
       headers: {
         'content-type':'application/x-www-form-urlencoded'          
       },
       body: {
         grant_type: 'password',
-        client_id:Cypress.env('PTClientID') ,
-        client_secret:Cypress.env('PTClientSecret') ,
-        username:Cypress.env('PTusername'),
-        password:Cypress.env('PTpassword'),
+        client_id:Cypress.env('CYPRESS_PTClientID') ,
+        client_secret:Cypress.env('CYPRESS_PTClientSecret') ,
+        username:Cypress.env('CYPRESS_PTusername'),
+        password:Cypress.env('CYPRESS_PTpassword'),
         audience: 'https://retail.api.ikea.com',
         }
     }).then(function(response){
@@ -59,16 +59,16 @@ Cypress.Commands.add("loginPT", () => {
     Cypress.Commands.add("loginIT", () => {
       cy.request({
         method: 'POST',
-        url: Cypress.env('ITauthUrl'),
+        url: ('https://it.accounts.ikea.com/oauth/token'),
         headers: {
           'content-type':'application/x-www-form-urlencoded'          
         },
         body: {
           grant_type: 'password',
-          client_id:Cypress.env('ITClientID') ,
-          client_secret:Cypress.env('ITClientSecret') ,
-          username:Cypress.env('ITuserName'),
-          password:Cypress.env('ITpassWord'),
+          client_id:Cypress.env('CYPRESS_ITClientID') ,
+          client_secret:Cypress.env('CYPRESS_ITClientSecret') ,
+          username:Cypress.env('CYPRESS_ITuserName'),
+          password:Cypress.env('CYPRESS_ITpassWord'),
           audience: 'https://retail.api.ikea.com',
           }
       }).then(function(response){
