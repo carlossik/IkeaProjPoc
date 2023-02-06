@@ -31,8 +31,8 @@ jobs:
           install: false
           browser: chrome
           headed: false
-        run: |
-          npx cypress run -e TAGS='@portugal' --spec **/*.feature
+          run: |
+            npx cypress run -e TAGS='@portugal' --spec **/*.feature
         #   env: true
         # env:
         #   client_id: ${{ secrets.CYPRESS_PT_CLIENT_ID }}
