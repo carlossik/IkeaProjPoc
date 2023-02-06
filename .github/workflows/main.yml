@@ -31,13 +31,15 @@ jobs:
           install: false
           browser: chrome
           headed: false
-          env: true
-        env:
-          client_id: ${{ secrets.CYPRESS_PT_CLIENT_ID }}
-          CYPRESS_PTauthUrl: ${{ secrets.CYPRESS_PT_AUTH_URL }}
-          client_secret: ${{ secrets.CYPRESS_PT_CLIENT_SECRET }}
-          username: ${{ secrets.CYPRESS_PT_USER_NAME }}
-          password: ${{secrets.CYPRESS_PT_PASSWORD }}      
+        run: |
+          npx cypress run -e TAGS='@portugal' --spec **/*.feature
+        #   env: true
+        # env:
+        #   client_id: ${{ secrets.CYPRESS_PT_CLIENT_ID }}
+        #   CYPRESS_PTauthUrl: ${{ secrets.CYPRESS_PT_AUTH_URL }}
+        #   client_secret: ${{ secrets.CYPRESS_PT_CLIENT_SECRET }}
+        #   username: ${{ secrets.CYPRESS_PT_USER_NAME }}
+        #   password: ${{secrets.CYPRESS_PT_PASSWORD }}      
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
