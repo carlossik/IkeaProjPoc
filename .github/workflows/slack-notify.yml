@@ -2,7 +2,7 @@
 
 on:
   workflow_run:
-    workflows: [RKE-E2E-TESTS-POC]
+    workflows: [Run Tests]
     types:
       - completed
     
