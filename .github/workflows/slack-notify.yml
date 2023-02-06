@@ -1,6 +1,10 @@
 
 
-on: workflow_dispatch
+on:
+  workflow_run:
+    workflows: []
+    types:
+      - completed
     
 name: End to End test report
 jobs:
