@@ -5,10 +5,10 @@ Feature: Verify reward amount and Unlock rewards
         Given A User has successfully Logged into the rewards page
     Scenario: Cake and Coffee for one is selected
         When Cake and Coffee for one is selected
-        Then Cake and Coffee amount displayed is "25"
+        Then Cake and Coffee amount displayed is "30"
     Scenario: Cake and Coffee for two is selected
         When They select Cake and Coffee for two and click
-        Then Cake and Coffee amount displayed is "25"
+        Then Cake and Coffee amount displayed is "60"
     Scenario: Complete meal for one is selected
         When They select Complete meal for one and click
         Then Complete meal for one amount displayed is ""

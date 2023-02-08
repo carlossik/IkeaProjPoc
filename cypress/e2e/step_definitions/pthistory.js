@@ -13,15 +13,19 @@ Then("They can see available keys",function(){
     cy.get('#rewards-total-balance > span').should('be.visible')
 });
 Then("They can see the History button",function(){
+    cy.loginPT();
     cy.get('#openHistory > :nth-child(1)').should('be.visible')
 });
 Given("User Clicks on the history button",function(){
+    cy.loginPT();
     cy.get('.rewards__keys__balance-history-button__label').click({force:true})
 });
 Then("Keys balance history  is displayed",function(){
+    cy.loginPT();
     cy.get('.rewards__sheets__content-wrapper').should('be.visible')
 });
 Then("Total keys matches total displayed",function(){
+    cy.loginPT();
 
 })
 

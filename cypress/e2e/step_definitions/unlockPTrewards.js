@@ -9,8 +9,11 @@ Given('A User has successfully Logged into the rewards page', function (string) 
   cy.loginPT();
 });
 When('Cake and Coffee for one is selected', function (string) {
-  return 'pending';
+  cy.loginPT();
+  cy.get('#rewards-reward-4989 > .rewards__rewards__inner').click({force:true})
+  
 });
 Then('Cake and Coffee amount displayed is {string} ', function () {
-  //return "pending"
+  cy.get('.reward__reward-bar__amount').find('span').should('have.text','30')
+  
 });
