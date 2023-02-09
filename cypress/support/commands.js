@@ -29,6 +29,19 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
+
+Cypress.Commands.add( "clickIfExist", (element) => {
+  cy.get('body').then((body) => {
+  cy.wait(5000).then(() => {
+    if (body.find(element).length > 0) {
+      cy.log('Element found, proceeding with test')
+      cy.get(element).click()
+    } else {
+      cy.log('Element not found, skipping test')
+    }
+  })
+  })
+})
 Cypress.Commands.add("loginPT", () => {
     cy.request({
       method: 'POST',
@@ -50,10 +63,11 @@ Cypress.Commands.add("loginPT", () => {
           expect(response.status).to.equal(200);
           cy.setCookie('idp_reguser', this.value);
           cy.visit('https://www.ikea.com/pt/en/loyalty-hub/')
-          cy.get('#onetrust-accept-btn-handler')
-          cy.wait(1000)
-          cy.get('#onetrust-accept-btn-handler').click({force:true})
-          cy.wait(1000)
+          cy.clickIfExist('#onetrust-accept-btn-handler')
+          // cy.get('#onetrust-accept-btn-handler')
+          // cy.wait(1000)
+          // cy.get('#onetrust-accept-btn-handler').click({force:true})
+          // cy.wait(1000)
         });
     })
     Cypress.Commands.add("loginIT", () => {
