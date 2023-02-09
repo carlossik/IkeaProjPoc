@@ -9,10 +9,10 @@ Given("A User is already Logged into rewards page", function () {
  
   cy.loginPT();
   
-  homePage.clickAcceptCookie()
+  // homePage.clickAcceptCookie()
 });
 Then("my reward keys should be displayed", function () {
-    homePage.clickAcceptCookie()
+    // homePage.clickAcceptCookie()
   cy.get("#rewardsGrid").should("be.visible");
 });
 Then("the number of rewards displayed are 10", function () {
