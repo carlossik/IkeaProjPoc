@@ -9,16 +9,16 @@ const RewardsPage = require("../../pages/RewardsPage").default;
 Given("A User has successfully Logged into rewards page", function () {
   cy.loginPT();
 });
-When("Cake and Coffee for one is selected and clicked", function () {
+When("Cake and hot drink for one is selected and clicked", function () {
   cy.get('#rewards-reward-4989 > .rewards__rewards__inner').click({ fore: true });
 });
-Then("Cake and Coffee for one page is displayed", function () {
-  cy.url().should("eq", RewardsPage.rewards.cakeAndCoffeeForOne);//"https://www.ikea.com/pt/en/loyalty-hub/rewards/4989/"); // => true
+Then("Cake and hot drink for one page is displayed", function () {
+  cy.url().should("eq", RewardsPage.rewards.cakeAndCoffeeForOne);
 });
-When("They select Cake and Coffee for two and click", function () {
+When("They select Cake and hot drink for two and click", function () {
   cy.get('#rewards-reward-4988 > .rewards__rewards__inner').click({ force: true });
 });
-Then("Cake and Coffee for two page is displayed", function () {
+Then("Cake and hot drink for two page is displayed", function () {
   cy.url().should("eq", RewardsPage.rewards.cakeAndCoffeeForTwo)
 });
 When("They select Complete meal for one and click", function () {

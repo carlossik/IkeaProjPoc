@@ -32,7 +32,7 @@ jobs:
           browser: chrome
           headed: false
           command: |
-            npx cypress run -e TAGS='@portugal' --spec **/*.feature
+            npx cypress run 
             
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
