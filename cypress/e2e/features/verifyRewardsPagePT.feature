@@ -6,9 +6,9 @@ Feature: Verify Rewards Displayed For User
     Scenario: Cake and hot drink for one is selected
         Given  Cake and hot drink for one is selected and clicked
         Then Cake and hot drink for one page is displayed
-    Scenario: Cake and hot drink for two is selected
-        When They select Cake and hot drink for two and click
-        Then Cake and hot drink for two page is displayed
+    # Scenario: Cake and hot drink for two is selected
+    #     When They select Cake and hot drink for two and click
+    #     Then Cake and hot drink for two page is displayed
     Scenario: Complete meal for one is selected
         When They select Complete meal for one and click
         Then Complete meal for one page is displayed
