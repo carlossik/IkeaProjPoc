@@ -9,22 +9,26 @@ Given("A ITUser is already Logged into rewards page", function () {
   homePage.clickAcceptCookie
 });
 Then("my ITreward keys should be displayed", function () {
-    homePage.clickAcceptCookie
+  cy.loginIT();
   cy.get("#rewardsGrid").should("be.visible");
 });
 Then("the number of ITrewards displayed are 10", function () {
+  cy.loginIT();
   homePage.verifyRewards;
 });
 Then("total ITKeys are displayed", function () {
+  cy.loginIT();
   homePage.RewardTotaldisPlayed;
 });
 Then("ITHistory button is displayed", function () {
   homePage.RewarHistoryButtonsdisplayed;
 });
 Then("my ITprojects will be displayed", function () {
+  cy.loginIT();
   homePage.verifyProjects;
 });
 Then("Total number of ITprojects displayed is 4", function () {
+  cy.loginIT();
   homePage.verifyNumberOfProjects;
 });
 Then("How to collect reward keysIT is displayed", function () {
@@ -32,6 +36,7 @@ Then("How to collect reward keysIT is displayed", function () {
 
 });
 Then("Frequently asked questionsIT are displayed", function () {
+  cy.loginIT();
   homePage.Faqsdisplayed;
   
 });

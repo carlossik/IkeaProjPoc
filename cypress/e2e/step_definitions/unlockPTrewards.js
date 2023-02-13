@@ -8,19 +8,19 @@ const RewardsPage = require('../../pages/RewardsPage').default;
 Given('A User has successfully Logged into the rewards page', function (string) {
   cy.loginPT();
 });
-When('Cake and Coffee for one is selected', function (string) {
+When('Cake and hot drink for one is selected', function (string) {
   //cy.loginPT();
   cy.get('#rewards-reward-4989 > .rewards__rewards__inner').click({force:true})
   
 });
-Then('Cake and Coffee amount displayed is "30"', function () {
+Then('Cake and hot drink for one amount displayed is "30"', function () {
   cy.get('.reward__reward-bar__amount > h3').should('have.text','30')
   
 });
-When('Cake and Coffee for two is selected', function (string) {
+When('They select Cake and hot drink for two and click', function (string) {
   cy.get('#rewards-reward-4988 > .rewards__rewards__inner').click({force:true})
 });
-Then('Cake and Coffee amount displayed is "60"', function () {
+Then('Cake and and hot drink for two amount displayed is "60"', function () {
   cy.get('.reward__reward-bar__amount > h3').should('have.text','60')
 });
 When('Complete meal for one is selected', function (string) {

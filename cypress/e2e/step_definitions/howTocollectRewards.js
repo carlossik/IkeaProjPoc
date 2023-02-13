@@ -14,11 +14,15 @@ Then('They can see how to collect rewards', function () {
     .should('be.visible')
 });
 Then("They can see how to collect rewards slider", function () {
-    return "pending";
+  cy.get('.earning-activities__slider-touch-area').should('be.visible');
     });
 Given('User slides the slider button', function () {
-  return 'pending';
+  cy.loginPT();
+  cy.get('.earning-activities__slider-touch-area').click({ multiple: true, force: true });
+  cy.get('.earning-activities__slider-touch-area').type(Cypress._.repeat('{rightarrow}', 12))
 });
+  
 Then('availabe rewards  is displayed', function () {
-  return 'pending';
+  cy.get('.earning-activities__slider').should('have.text','€ 520')
+  cy.get('.earning-activities__activity--featured > .earning-activities__activity__inner > .earning-activities__activity__info > .earning-activities__activity__amount > strong').should('have.text','135')
 });
