@@ -35,8 +35,8 @@ jobs:
             npx cypress run 
             
       - name: Slack Notification
-          runs-on: ubuntu-latest
-          needs: Cypress run
+        runs-on: ubuntu-latest
+        needs: Cypress run
           steps:
             - name: Download test artifacts
               uses: actions/download-artifact@v3
