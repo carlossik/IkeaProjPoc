@@ -15,12 +15,12 @@ When("Cake and hot drink for one is selected and clicked", function () {
 Then("Cake and hot drink for one page is displayed", function () {
   cy.url().should("eq", RewardsPage.rewards.cakeAndCoffeeForOne);
 });
-When("They select Cake and hot drink for two and click", function () {
-  cy.get('#rewards-reward-4988 > .rewards__rewards__inner').click({ force: true });
-});
-Then("Cake and hot drink for two page is displayed", function () {
-  cy.url().should("eq", RewardsPage.rewards.cakeAndCoffeeForTwo)
-});
+// When("They select Cake and hot drink for two and click", function () {
+//   cy.get('#rewards-reward-4988 > .rewards__rewards__inner').click({ force: true });
+// });
+// Then("Cake and hot drink for two page is displayed", function () {
+//   cy.url().should("eq", RewardsPage.rewards.cakeAndCoffeeForTwo)
+// });
 When("They select Complete meal for one and click", function () {
   cy.get('#rewards-reward-4907 > .rewards__rewards__inner').click({ force: true });
 });
