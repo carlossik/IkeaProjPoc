@@ -2,11 +2,9 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
 
 const homePage = require('../../pages/HomePage').default;
-//const logUser = require('../loginScript').default;
 
 Given('A user is already Logged in', function () {
   cy.loginPT();
-  //homePage.clickAcceptCookie();
 });
 
 Then('They can see how to collect rewards', function () {

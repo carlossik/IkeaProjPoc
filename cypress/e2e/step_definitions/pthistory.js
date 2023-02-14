@@ -26,7 +26,6 @@ Then("Keys balance history  is displayed",function(){
     HomePage.GetTotalKeys()
 });
 Then("Total keys matches total displayed",function(){
-    //cy.get('#rewards--history-total').should('be.visible')
     HomePage.GetTotalKeysOnHistoryTab()
 
 })

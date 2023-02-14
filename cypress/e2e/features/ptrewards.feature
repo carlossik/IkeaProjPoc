@@ -8,9 +8,6 @@ Background:
         Then the number of rewards displayed are 10
         Then total Keys are displayed
         Then History button is displayed
-    # Scenario: Projects are Displayed
-    #     Then my projects will be displayed
-    #     Then Total number of projects displayed is 4
     Scenario: How to collect reward Keys is Visible to user
         Then How to collect reward keys is displayed
     Scenario: Frequently asked questions are displayed
