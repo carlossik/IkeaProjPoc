@@ -37,11 +37,11 @@ jobs:
       - name: Slack Notification
         runs-on: ubuntu-latest
         needs: Cypress run
-          steps:
-            - name: Download test artifacts
-              uses: actions/download-artifact@v3
-              with:
-                path: test-artifacts
+        steps:
+          - name: Download test artifacts
+            uses: actions/download-artifact@v3
+            with:
+              path: test-artifacts
       - name: 'Send Slack notification'
         uses: automattic/action-test-results-to-slack@v1
         with:
