@@ -114,7 +114,12 @@ class HomePage {
         cy.log("===== Print Value Using Invoke Command ==== ", this.textFunction)
 
     }
-      
+      SlideUp(slideAmount){
+        cy.get('.earning-activities__slider-touch-area')
+  .click({ multiple: true, force: true });
+  cy.get('.earning-activities__slider-touch-area')
+  .type(Cypress._.repeat('{rightarrow}', slideAmount))
+      }
       
   }
   
