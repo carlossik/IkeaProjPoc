@@ -42,12 +42,12 @@ jobs:
               uses: actions/download-artifact@v3
               with:
                 path: test-artifacts
-            - name: 'Send Slack notification'
-              uses: automattic/action-test-results-to-slack@v1
-              with:
-                 SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
-                 SLACK_TITLE: END TO END TESTS REPORT
-                 SLACK_MESSAGE: "THIS IS THE END TO END TEST REPORT:rocket"
+      - name: 'Send Slack notification'
+        uses: automattic/action-test-results-to-slack@v1
+        with:
+          SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
+          SLACK_TITLE: END TO END TESTS REPORT
+          SLACK_MESSAGE: "THIS IS THE END TO END TEST REPORT:rocket"
                 
           
         # uses: rtCamp/action-slack-notify@v2
