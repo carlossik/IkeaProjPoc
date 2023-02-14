@@ -15,12 +15,6 @@ Then("the number of rewards displayed are 10", function () {
   cy.loginPT();
   cy.get('*[id^="rewards-reward-"]').should('have.length',10);
 })
- 
-  
-
-
-  //cy.get('*[class^="#rewards-reward-"]').should('have.length',10);
-
 Then("total Keys are displayed", function () {
   cy.loginPT();
   homePage.RewardTotaldisPlayed();
@@ -28,19 +22,6 @@ Then("total Keys are displayed", function () {
 Then("History button is displayed", function () {
   cy.loginPT();
   homePage.RewarHistoryButtonsdisplayed();
-});
-Then("my projects will be displayed", function () {
-  cy.loginPT();
-  //homePage.verifyProjects();
-  //cy.get('*[id^="data-testid="card-entrypoints"]').should('have.length',4);
-  //cy.get('*[data-testid^="card-entrypoints"]' ).should('have.length',4)
-  //cy.get('[data-testid="card-entrypoints"] > :nth-child(1) > :nth-child(1) > .card > .card__info')
-});
-Then("Total number of projects displayed is 4", function () {
-  cy.loginPT();
-  cy.get('*[data-test-id^="card-entrypoints"]' ).should('have.attr', '.card__info').should('have.length',4)
-  //cy.get('[data-test-id^="table-element-"][data-test-id$=".card__info"])
-  //cy.get('*[data-cy^="introCard"]')
 });
 Then("How to collect reward keys is displayed", function () {
   cy.loginPT();

@@ -7,12 +7,10 @@ const homePage = require("../../pages/HomePage").default;
 
 Given("A ITUser is already Logged into rewards page", function () {
   cy.loginIT();
-  //homePage.clickAcceptCookie
-});
+  });
 Then("my ITreward keys should be displayed", function () {
   cy.loginIT();
-  //cy.get("#rewardsGrid").should("be.visible");
-  HomePage.VerifyRewardsGrid()
+    HomePage.VerifyRewardsGrid()
 });
 Then("the number of ITrewards displayed are 10", function () {
   cy.loginIT();
@@ -40,5 +38,4 @@ Then("How to collect reward keysIT is displayed", function () {
 Then("Frequently asked questionsIT are displayed", function () {
   cy.loginIT();
   homePage.Faqsdisplayed();
-  
 });
