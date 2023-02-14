@@ -15,22 +15,13 @@ class HomePage {
         IkeaGiftRegistry : () => cy.get('.card-entrypoints__grid > :nth-child(4) > :nth-child(1) > .card > .card__info > .card__text-wrapper > .card__title')
     }
     verifyProjects(){
-        this.numberOfProjects.forEach((_project, index) => {
-            _project.should('be.visible')
-            return this
-
-        })
+        cy.get('*[id^="rewards-reward-"]').should('have.length',10);
     }
     verifyNumberOfProjects(){
-        cy.get('.card-entrypoints__grid').find('.card_title')
-        .then(projects => {
-            const projCount = Cypress.$(projects).length;
-            cy.log(projCount)
-            expect(projCount).to.have.length(4);
-          });
+        cy.get('*[id^="rewards-reward-"]').should('have.length',10);
     }
     clickOpenHistoryButton() {
-        cy.get('#openHistory > :nth-child(1)')
+        cy.get('.rewards__keys__balance-history-button__label')
         .find('span')
         .should('be.visible')
         .as('History')
@@ -82,7 +73,7 @@ class HomePage {
   
     }
    
-    displayedRewards = {
+     displayedRewards = {
         cakeAndHotDrinkForOne: () => cy.get('#rewards-reward-4989 > .rewards__rewards__inner'),
         voucherForDeliveryOrCollect: () => cy.get('#rewards-reward-4903 > .rewards__rewards__inner'),
         cakeAndHotDrinkForTwo: () => cy.get('#rewards-reward-4988 > .rewards__rewards__inner'),
@@ -96,9 +87,9 @@ class HomePage {
         
       };
       verifyRewards(){
-        this.displayedRewards.forEach((_reward, index) => {
-            _reward.should('be.visible')
-            console.log('Index: ' + index + ' Value: ' + _reward);
+       (this.displayedRewards).each(($el, index) => 
+        {
+          $el.length().should('be.visible')
         });
       };
       EnterRewards(){
@@ -107,6 +98,22 @@ class HomePage {
             cy.url().should('include', 'loyalty-hub/rewards/') // => true
         });
     };
+    VerifyRewardsGrid(){
+        cy.get("#rewardsGrid").should("be.visible");
+    };
+    GetKeyBalanceHistory(){
+    cy.get('.rewards__balanceHistory').should('be.visible')
+    };
+    GetTotalKeys(){
+        cy.get('#rewards-total-balance > span').invoke('text').as('textFunction')
+        cy.log("===== Print Value Using Invoke Command ==== ", this.textFunction)
+    }
+    GetTotalKeysOnHistoryTab(){
+        cy.get('.rewards- -history-total').invoke('text').as('textFunction2')
+        //id="rewards--history-total"
+        cy.log("===== Print Value Using Invoke Command ==== ", this.textFunction)
+
+    }
       
       
   }
