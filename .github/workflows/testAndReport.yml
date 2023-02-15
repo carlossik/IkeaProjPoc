@@ -21,6 +21,14 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+      - name: Cypress install
+        run: npm install --legacy-peer-deps
+      - name: create the cypress.env.json file
+        id: create-json
+        uses: jsdaniell/create-json@1.1.2
+        with:
+          name: "cypress.env.json"
+          json: ${{ secrets.CYPRESS_ENV_CI }}
 
       - name: Cypress run with Slack reporting
         run: |
