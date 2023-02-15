@@ -59,12 +59,12 @@ module.exports = defineConfig({
     defaultCommandTimeout: 20000,
     chromeWebSecurity: false,
     fixturesFolder: false,
-    //supportFile: 'cypress/support/e2e.{js,jsx,ts,tsx}',
+    
     supportFile: "cypress/support/e2e.js",
     e2e: {
       setupNodeEvents,
       specPattern: "cypress/e2e/features/*.feature",
-      baseUrl: 'https://www.ikea.com/pt/en/', //profile/login/',
+      baseUrl: 'https://www.ikea.com/pt/en/', 
       step_definitions: 'cypress/e2e/**/*.{cy,js,ts}',
       userAgent: null,
       reporter: "cypress-multi-reporters",
@@ -72,7 +72,6 @@ module.exports = defineConfig({
     configFile: "reporterOpts.json"
   }
     
-      ///excludeSpecPattern: ['*.js'],
     },
     env: {
       "pt_username": `${process.env.PT_USER_NAME}`,
