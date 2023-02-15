@@ -35,12 +35,64 @@ jobs:
             npx cypress run 
             
       - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2
+        runs-on: ubuntu-latest
+        needs: Cypress run
+        steps:
+          - name: Download test artifacts
+            uses: actions/download-artifact@v3
+            with:
+              path: test-artifacts
+      - name: 'Send Slack notification'
+      - uses: 8398a7/action-slack@v2#automattic/action-test-results-to-slack@v1
+        with:
+          status: ${{ job.status }}
+          author_name: Integration Test
         env:
-          SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
+          SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}} # required
           SLACK_TITLE: END TO END TESTS REPORT
           SLACK_MESSAGE: "THIS IS THE END TO END TEST REPORT:rocket"
+          - uses: 8398a7/action-slack@v2
+        if: always() # Pick up events even if the job fails or is canceled.
+          #SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
+          #SLACK_TITLE: END TO END TESTS REPORT
+          #SLACK_MESSAGE: "THIS IS THE END TO END TEST REPORT:rocket"
+          #- uses: 8398a7/action-slack@v2
+  #with:
+    #status: ${{ job.status }}
+    #author_name: Integration Test # default: 8398a7@action-slack
+  #env:
+    #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # optional
+    #SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+  #if: always() # Pick up events even if the job fails or is canceled.
+                
+          
+        # uses: rtCamp/action-slack-notify@v2
+        # env:
+        #   SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
+        #   SLACK_TITLE: END TO END TESTS REPORT
+        #   SLACK_MESSAGE: "THIS IS THE END TO END TEST REPORT:rocket"
       
+      
+
+
+# name: 'Send Slack notification'
+#     runs-on: ubuntu-latest
+#     needs: run-tests
+  
+#     steps:
+#       - name: Download test artifacts
+#         uses: actions/download-artifact@v3
+#         with:
+#           path: test-artifacts
+
+#       - name: 'Send Slack notification'
+#         uses: automattic/action-test-results-to-slack@v1
+#         with:
+
+
+
+
+
 
 
     
