@@ -66,7 +66,11 @@ module.exports = defineConfig({
       specPattern: "cypress/e2e/features/*.feature",
       baseUrl: 'https://www.ikea.com/pt/en/', //profile/login/',
       step_definitions: 'cypress/e2e/**/*.{cy,js,ts}',
-      userAgent: null
+      userAgent: null,
+      reporter: "cypress-multi-reporters",
+     reporterOptions: {
+    configFile: "reporterOpts.json"
+  }
     
       ///excludeSpecPattern: ['*.js'],
     },
