@@ -26,10 +26,12 @@ class HomePage {
       ),
   };
   verifyProjects() {
-    cy.get('*[id^="rewards-reward-"]').should('have.length', 10);
+    cy.get('*[id^="rewards-reward-"]')
+    .should('have.length', 10);
   }
   verifyNumberOfProjects() {
-    cy.get('*[id^="rewards-reward-"]').should('have.length', 10);
+    cy.get('*[id^="rewards-reward-"]')
+    .should('have.length', 10);
   }
   clickOpenHistoryButton() {
     cy.get('.rewards__keys__balance-history-button__label')
@@ -40,10 +42,12 @@ class HomePage {
   }
 
   RewarHistoryButtonsdisplayed() {
-    cy.get('.rewards__keys__balance-history-button__label').should('be.visible');
+    cy.get('.rewards__keys__balance-history-button__label')
+    .should('be.visible');
   }
   RewardTotaldisPlayed() {
-    cy.get('#rewards-total-balance > span').should('be.visible');
+    cy.get('#rewards-total-balance > span')
+    .should('be.visible');
     cy.log('reward is visible');
     return this;
   }
@@ -56,12 +60,14 @@ class HomePage {
   }
 
   CustomerMemberCardDisplayed() {
-    cy.get('.member-card__section').should('be.visible');
+    cy.get('.member-card__section')
+    .should('be.visible');
     return this;
   }
 
   HowToCollectKeysdisplayed() {
-    cy.get('#earning-activities-title').should('be.visible');
+    cy.get('#earning-activities-title')
+    .should('be.visible');
     return this;
   }
   memberNumber() {
@@ -70,8 +76,10 @@ class HomePage {
   }
 
   Faqsdisplayed() {
-    cy.get('#title > :nth-child(1) > .faq__accordion__heading').should('be.visible');
-    cy.get('#title > :nth-child(1) > .faq__accordion__heading').click({ force: true });
+    cy.get('#title > :nth-child(1) > .faq__accordion__heading')
+    .should('be.visible');
+    cy.get('#title > :nth-child(1) > .faq__accordion__heading')
+    .click({ force: true });
     return this;
   }
 
@@ -99,17 +107,21 @@ class HomePage {
     });
   }
   VerifyRewardsGrid() {
-    cy.get('#rewardsGrid').should('be.visible');
+    cy.get('#rewardsGrid')
+    .should('be.visible');
   }
   GetKeyBalanceHistory() {
-    cy.get('.rewards__balanceHistory').should('be.visible');
+    cy.get('.rewards__balanceHistory')
+    .should('be.visible');
   }
   GetTotalKeys() {
-    cy.get('#rewards-total-balance > span').invoke('text').as('textFunction');
+    cy.get('#rewards-total-balance > span')
+    .invoke('text').as('textFunction');
     cy.log('===== Print Value Using Invoke Command ==== ', this.textFunction);
   }
   GetTotalKeysOnHistoryTab() {
-    cy.get('.rewards- -history-total').invoke('text').as('textFunction2');
+    cy.get('.rewards- -history-total')
+    .invoke('text').as('textFunction2');
     //id="rewards--history-total"
     cy.log('===== Print Value Using Invoke Command ==== ', this.textFunction);
   }
