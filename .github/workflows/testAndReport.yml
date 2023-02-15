@@ -32,6 +32,6 @@ jobs:
 
       - name: Cypress run with Slack reporting
         run: |
-          npx cypress run --reporter cypress-slack-reporter
+          npx cypress run 
         env:
           SLACK_WEBHOOK_URL: ${{secrets.SLACK_WEBHOOK}}
