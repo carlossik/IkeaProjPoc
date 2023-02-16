@@ -50,6 +50,7 @@ jobs:
           status: ${{ job.status }}
           notify_when: 'success,failure'
           notification_title: Rke-e2e-smoke-test-report
-          footer: <***run_url***|View Run> | This job Runs Every Two hours 
+          footer: "<{run_url}|View Run>|Linked Repo <{repo_url}|{repo}> | <{workflow_url}|View Workflow>|This job Runs Every Two hours"
+          
         env:
           SLACK_WEBHOOK_URL:  ${{secrets.SLACK_WEBHOOK}}
