@@ -6,8 +6,9 @@ on:
      #Runs "every midnight" (see https://crontab.guru)
     - cron: "0 0 * * *"
 jobs:
-  cypress-run:
+  cypress-tests:
     runs-on: ubuntu-latest
+
     steps:
       - name: Upgrade packages
         run: npm install @badeball/cypress-cucumber-preprocessor
@@ -21,31 +22,16 @@ jobs:
         with:
           name: "cypress.env.json"
           json: ${{ secrets.CYPRESS_ENV_CI }}
+      - name: Run Cypress tests
+        run: npm run cypress:run
 
+      - name: Generate Cucumber report
+        run: npx cypress-cucumber-preprocessor --format json:cypress/reports/cucumber_report.json
 
-    # - name: Install dependencies
-    #   run: |
-    #     sudo apt-get update
-    #     curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-    #     sudo apt-get install -y nodejs
-    #     npm install
-    #       - name: create the cypress.env.json file
-    #       id: create-json
-    #       uses: jsdaniell/create-json@1.1.2
-    #       with:
-    #         name: "cypress.env.json"
-    #         json: ${{ secrets.CYPRESS_ENV_CI }}
-
-    - name: Run Cypress tests
-      run: npm run cypress:run
-
-    - name: Generate Cucumber report
-      run: npx cypress-cucumber-preprocessor --format json:cypress/reports/cucumber_report.json
-
-    - name: Send report to Slack
-      uses: craftech-io/slack-action@v1
-      with:
-        url: ${{ secrets.SLACK_WEBHOOK }}
-        message: "Cypress Smoke test results are in!"
-        attachments: '[{"fallback": "Cucumber report", "title": "Cucumber report", "text": "See attached report", "color": "#36a64f"}]'
-        files: './cypress/reports/cucumber_report.json'
+      - name: Send report to Slack
+        uses: craftech-io/slack-action@v1
+        with:
+          url: ${{ secrets.SLACK_WEBHOOK }}
+          message: "Cypress Smoke test results are in!"
+          attachments: '[{"fallback": "Cucumber report", "title": "Cucumber report", "text": "See attached report", "color": "#36a64f"}]'
+          files: './cypress/reports/cucumber_report.json'
