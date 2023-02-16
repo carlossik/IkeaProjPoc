@@ -23,7 +23,12 @@ jobs:
           name: "cypress.env.json"
           json: ${{ secrets.CYPRESS_ENV_CI }}
       - name: Run Cypress tests
-        run: npm run cypress:run
+        with:
+          install: false
+          browser: chrome
+          headed: false
+          command: |
+            npx cypress run 
 
       - name: Generate Cucumber report
         run: npx cypress-cucumber-preprocessor --format json:cypress/reports/cucumber_report.json
