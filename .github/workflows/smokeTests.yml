@@ -3,7 +3,7 @@ name: Cypress Smoke Tests
 on:
   workflow_dispatch:
   schedule:
-     #Runs "every midnight" (see https://crontab.guru)
+     #Runs "every hour" (see https://crontab.guru)
     - cron: "0 0 * * *"
 jobs:
   cypress-run:
@@ -13,6 +13,10 @@ jobs:
         run: npm install @badeball/cypress-cucumber-preprocessor
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v1
+          with:
+            node-version: 14
       - name: Cypress install
         run: npm install --legacy-peer-deps
       - name: create the cypress.env.json file
