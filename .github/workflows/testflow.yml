@@ -34,3 +34,11 @@ jobs:
           name: cypress-execution-report
           path: cypress/reports/cucumber-html/test-report.html
           retention-days: 10
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+           SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
+           SLACK_USERNAME: Smoke Test BOT
+           SLACK_TITLE: Smoke Test 
+           SLACK_MESSAGE: "Results From Smoke Test :rocket:"
+           SLACK_COLOR: ${{ job.status }}
