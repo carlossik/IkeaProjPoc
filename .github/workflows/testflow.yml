@@ -3,8 +3,8 @@ name: RKE-E2E-TESTS-POC
 on:
   workflow_dispatch:
   schedule:
-     #Runs "every midnight" (see https://crontab.guru)
-    - cron: "0 0 * * *"
+     #Runs "every two hours" (see https://crontab.guru)
+    - cron: "0 */2 * * *"
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
@@ -48,6 +48,8 @@ jobs:
         uses: ravsamhq/notify-slack-action@master
         with:
           status: ${{ job.status }}
-          notify_when: 'success'
+          notify_when: 'success,failure'
+          notification_title: Rke-e2e-smoke-test-report
+          footer: <***run_url***|View Run> | This job Runs Every Two hours 
         env:
           SLACK_WEBHOOK_URL:  ${{secrets.SLACK_WEBHOOK}}
