@@ -27,6 +27,7 @@ jobs:
           install: false
           browser: chrome
           headed: false
+          command: npm run testH
       - name: uploading artifact
         uses: actions/upload-artifact@v2
         if: always()
@@ -37,8 +38,16 @@ jobs:
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
-           SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
-           SLACK_USERNAME: Smoke Test BOT
-           SLACK_TITLE: Smoke Test 
-           SLACK_MESSAGE: "Results From Smoke Test :rocket:"
-           SLACK_COLOR: ${{ job.status }}
+          SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
+          SLACK_USERNAME: Smoke Test BOT
+          SLACK_TITLE: Smoke Test 
+          SLACK_MESSAGE: "Results From Smoke Test :rocket:"
+          SLACK_COLOR: ${{ job.status }}
+      - name: Report Status
+        if: always()
+        uses: ravsamhq/notify-slack-action@master
+        with:
+          status: ${{ job.status }}
+          notify_when: 'failure'
+        env:
+          SLACK_WEBHOOK_URL:  ${{secrets.SLACK_WEBHOOK}}
