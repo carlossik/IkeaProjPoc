@@ -1,14 +1,13 @@
-name: Cypress Smoke tests
+name: Cypress Smoke Tests
 
-on: 
+on:
   workflow_dispatch:
   schedule:
      #Runs "every midnight" (see https://crontab.guru)
     - cron: "0 0 * * *"
 jobs:
-  cypress-tests:
+  cypress-run:
     runs-on: ubuntu-latest
-
     steps:
       - name: Upgrade packages
         run: npm install @badeball/cypress-cucumber-preprocessor
@@ -22,19 +21,17 @@ jobs:
         with:
           name: "cypress.env.json"
           json: ${{ secrets.CYPRESS_ENV_CI }}
-      - name: Run Cypress tests
-      - uses: cypress-io/github-action@v5.0.7
+      - name: Cypress run
+        uses: cypress-io/github-action@v5.0.7
         with:
           install: false
           browser: chrome
           headed: false
           command: |
             npx cypress run 
-
       - name: Generate Cucumber report
         run: npx cypress-cucumber-preprocessor --format json:cypress/reports/cucumber_report.json
-
-      - name: Send report to Slack
+      - name: Slack Notification
         uses: craftech-io/slack-action@v1
         with:
           url: ${{ secrets.SLACK_WEBHOOK }}
