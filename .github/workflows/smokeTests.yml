@@ -29,12 +29,12 @@ jobs:
       run: npm run cypress:run
 
     - name: Generate Cucumber report
-      run: npx cypress-cucumber-preprocessor --format json:cypress/results/cucumber_report.json
+      run: npx cypress-cucumber-preprocessor --format json:cypress/reports/cucumber_report.json
 
     - name: Send report to Slack
-      uses: stefanzweifel/slack-webhook-action@v1.3.0
+      uses: craftech-io/slack-action@v1
       with:
         url: ${{ secrets.SLACK_WEBHOOK }}
-        message: "Cypress test results are in!"
+        message: "Cypress Smoke test results are in!"
         attachments: '[{"fallback": "Cucumber report", "title": "Cucumber report", "text": "See attached report", "color": "#36a64f"}]'
-        files: './cypress/results/cucumber_report.json'
+        files: './cypress/reports/cucumber_report.json'
