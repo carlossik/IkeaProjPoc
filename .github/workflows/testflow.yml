@@ -1,4 +1,4 @@
-name: RKE-E2E-TESTS-POC
+name: RKE-E2E-SMOKE-TESTS
 
 on:
   workflow_dispatch:
