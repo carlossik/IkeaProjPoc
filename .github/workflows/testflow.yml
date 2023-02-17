@@ -3,8 +3,8 @@ name: RKE-E2E-SMOKE-TESTS
 on:
   workflow_dispatch:
   schedule:
-     #Runs "every two hours" (see https://crontab.guru)
-    - cron: "0 */2 * * *"
+     #Runs "every 15 minutes" (see https://crontab.guru)
+    - cron: "*/15 * * * *"
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
@@ -35,22 +35,27 @@ jobs:
           name: cypress-execution-report
           path: cypress/reports/cucumber-html/test-report.html
           retention-days: 10
-      - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
-          SLACK_USERNAME: Smoke Test BOT
-          SLACK_TITLE: Smoke Test 
-          SLACK_MESSAGE: "Results From Smoke Test :rocket:"
-          SLACK_COLOR: ${{ job.status }}
+      # - name: Slack Notification
+      #   uses: rtCamp/action-slack-notify@v2
+      #   env:
+      #     SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
+      #     SLACK_USERNAME: Smoke Test BOT
+      #     SLACK_TITLE: Smoke Test 
+      #     SLACK_MESSAGE: "Results From Smoke Test :rocket:"
+      #     SLACK_COLOR: ${{ job.status }}
       - name: Report Status
         if: always()
         uses: ravsamhq/notify-slack-action@master
         with:
           status: ${{ job.status }}
-          notify_when: 'success,failure'
+          notify_when: 'failure'
           notification_title: Rke-e2e-smoke-test-report
-          footer: "<{run_url}|View Run>|Linked Repo <{repo_url}|{repo}> | <{workflow_url}|View Workflow>|This job Runs Every Two hours"
+          footer: "<{run_url}|View Run>|Linked Repo <{repo_url}|{repo}> | <{https://github.com/ingka-group-digital/Rke-E2E-Tests-POC/actions/workflows/smokeTests.yml}|View Workflow>|This job runs every 15 minutes"
           
         env:
           SLACK_WEBHOOK_URL:  ${{secrets.SLACK_WEBHOOK}}
+      - name: Send artifacts to Slack
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Cypress tests artifacts: <cypress/reports/cucumber-html/test-report.html>"}' <${{secrets.SLACK_WEBHOOK}}>
+
+
