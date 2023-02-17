@@ -1,12 +1,15 @@
-Feature: Perform Health Check in regions
-    feature :We need to check the state of the app every hour
+Feature: Perform health Check in Different Countries
+    feature: we need to check the app health every 15 minutes
+    Scenario Outline: Conducting a health Check
 
-    Scenario Outline: Scenario Outline name: How To collect Rewards is visible
-        Given A user is already Logged in a region
-        Then They can see member card displayed
-        Then They can see Their rewards displayed
+        Given I login to a market with "<region_Credentials>"
+        Then I should see my member details
+        And I see my rewards displayed
+        Then I should see my keys displayed
+        Then my history should be displayed
         Examples:
-            | Region | MemberCard Displayed | Rewards Displayed |
-            | PT     | True                 | True              |
-            | IT     | True                 | True              |
-            | AU     | True                 | True              |
+
+            | region_Credentials |
+            | PT                 |
+            | IT                 |
+            | AU                 |

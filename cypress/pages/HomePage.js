@@ -39,6 +39,7 @@ class HomePage {
       .should('be.visible')
       .as('History')
       .click({ force: true });
+      cy.get('.rewards__modal-body').should('be.visible')
   }
 
   RewarHistoryButtonsdisplayed() {
@@ -120,7 +121,7 @@ class HomePage {
     cy.log('===== Print Value Using Invoke Command ==== ', this.textFunction);
   }
   GetTotalKeysOnHistoryTab() {
-    cy.get('.rewards- -history-total')
+    cy.get('[id="rewards--history-total"]')
     .invoke('text').as('textFunction2');
     //id="rewards--history-total"
     cy.log('===== Print Value Using Invoke Command ==== ', this.textFunction);
