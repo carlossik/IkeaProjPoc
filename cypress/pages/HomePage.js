@@ -107,7 +107,7 @@ class HomePage {
     });
   }
   VerifyRewardsGrid() {
-    cy.get('#rewardsGrid')
+    cy.get('#rewardsGrid1')
     .should('be.visible');
   }
   GetKeyBalanceHistory() {
