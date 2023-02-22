@@ -33,11 +33,29 @@ jobs:
           headed: false
           command: |
             npx cypress run 
-            
-      - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2
+
+       - name: uploading artifact
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cypress-execution-report
+          path: cypress/reports/cucumber-html/test-report.html
+          retention-days: 10
+      - name: Report Status to Slack
+        if: always()
+        uses: ravsamhq/notify-slack-action@master
+        with:
+          status: ${{ job.status }}
+          notify_when: 'failure'
+          notification_title: Rke-e2e-Regression-test-report
+          footer: "<{run_url}|View Run>|Linked Repo <{repo_url}|View Workflow>|This job runs on midnight everyday"
         env:
-          SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
-          SLACK_TITLE: END TO END TESTS REPORT
-          SLACK_MESSAGE: "THIS IS THE END TO END TEST REPORT:rocket"
+          SLACK_WEBHOOK_URL:  ${{secrets.SLACK_WEBHOOK}}
+            
+      # - name: Slack Notification
+      #   uses: rtCamp/action-slack-notify@v2
+      #   env:
+      #     SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
+      #     SLACK_TITLE: END TO END TESTS REPORT
+      #     SLACK_MESSAGE: "THIS IS THE END TO END TEST REPORT:rocket"
       
