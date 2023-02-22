@@ -34,7 +34,7 @@ jobs:
           command: |
             npx cypress run 
 
-       - name: uploading artifact
+      - name: uploading artifact
         uses: actions/upload-artifact@v2
         if: always()
         with:
