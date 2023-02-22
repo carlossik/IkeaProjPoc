@@ -89,6 +89,31 @@ Cypress.Commands.add("loginPT", () => {
             cy.visit('https://www.ikea.com/it/it/loyalty-hub/')
             cy.clickIfExist('#onetrust-accept-btn-handler')
           });
-      })
-    
+   
+   
+        })
+      Cypress.Commands.add("login", (market) => {
+        cy.request({
+          method: 'POST',
+          url: (Cypress.env.CYPRESS_PTauthUrl),
+          headers: {
+            'content-type':'application/x-www-form-urlencoded'          
+          },
+          body: {
+            grant_type: 'password',
+            client_id:Cypress.env('CYPRESS_PTClientID') ,
+            client_secret:Cypress.env('CYPRESS_PTClientSecret') ,
+            username:Cypress.env('CYPRESS_PTusername'),
+            password:Cypress.env('CYPRESS_PTpassword'),
+            audience: 'https://retail.api.ikea.com',
+            }
+        }).then(function(response){
+          this.value = response.body.access_token;
+          cy.log("Value "+this.value);
+              expect(response.status).to.equal(200);
+              cy.setCookie('idp_reguser', this.value);
+              cy.visit('https://www.ikea.com/pt/en/loyalty-hub/')
+              cy.clickIfExist('#onetrust-accept-btn-handler')
+            });
+        })
   
