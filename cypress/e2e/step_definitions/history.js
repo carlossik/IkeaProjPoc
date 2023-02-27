@@ -5,18 +5,17 @@ import HomePage from "../../pages/HomePage";
 const homePage = require("../../pages/HomePage").default;
 
 
-Given("A user is already Logged into rewards page",function(){
-    cy.loginPT();
-});
-When("They can see available keys",function(){
+
+
+Then("They can see available keys",function(){
     HomePage.RewardTotaldisPlayed()
 });
 Then("They can see the History button",function(){
-    cy.loginPT();
+    
     HomePage.RewarHistoryButtonsdisplayed();
 });
 When("User Clicks on the history button",function(){
-    cy.loginPT();
+    
     HomePage.clickOpenHistoryButton();
 
 });
