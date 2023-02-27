@@ -45,10 +45,10 @@ jobs:
           footer: "<{run_url}|View Run>|Linked Repo <{repo_url}|View Workflow>|This job runs every 15 minutes"
         env:
           SLACK_WEBHOOK_URL:  ${{secrets.SLACK_WEBHOOK}}
-      - name: Upload report to slack step
-        uses: adrey/slack-file-upload-action@1.0.5
-        with:
-          token: ${{secrets.SLACK_TOKEN}}
-          path: cypress/reports/cucumber-html/test-report.html
-          channel: ce-rke-e2e-test-run-alerts
+      # - name: Upload report to slack step
+      #   uses: adrey/slack-file-upload-action@1.0.5
+      #   with:
+      #     token: ${{secrets.SLACK_TOKEN}}
+      #     path: cypress/reports/cucumber-html/test-report.html
+      #     channel: ce-rke-e2e-test-run-alerts
           
