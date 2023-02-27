@@ -48,6 +48,6 @@ jobs:
       - name: Upload report to slack step
         uses: adrey/slack-file-upload-action@1.0.5
         with:
-          token: ${{secrets.SLACK_WEBHOOK}}
+          token: ${{secrets.SLACK_TOKEN}}
           path: cypress/reports/cucumber-html/test-report.html
           
