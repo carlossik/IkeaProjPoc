@@ -45,8 +45,9 @@ jobs:
           footer: "<{run_url}|View Run>|Linked Repo <{repo_url}|View Workflow>|This job runs every 15 minutes"
         env:
           SLACK_WEBHOOK_URL:  ${{secrets.SLACK_WEBHOOK}}
-      # - name: Send artifacts to Slack
-      #   run: |
-      #     curl -X POST -H 'Content-type: application/json' --data '{"text":"Cypress tests artifacts: cypress/reports/cucumber-html/test-report.html"}' ${{secrets.SLACK_WEBHOOK}}
-
-
+      - name: Upload report to slack step
+        uses: adrey/slack-file-upload-action@master
+        with:
+          token: ${{secrets.SLACK_WEBHOOK}}
+          path: cypress/reports/cucumber-html/test-report.html
+          
