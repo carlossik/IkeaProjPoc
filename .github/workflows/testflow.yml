@@ -50,4 +50,5 @@ jobs:
         with:
           token: ${{secrets.SLACK_TOKEN}}
           path: cypress/reports/cucumber-html/test-report.html
+          channel: ce-rke-e2e-test-run-alerts
           
