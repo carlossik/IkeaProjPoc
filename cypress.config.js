@@ -22,7 +22,7 @@ module.exports = defineConfig({
       on('task',{
         lighthouse:lighthouse()
       })
-      //on('before:browser:launch', (browser = {}, launchOptions) => {prepareAudit(launchOptions) return launchOptions});
+     
       on('before:browser:launch', (browser = {}, launchOptions) => {
         prepareAudit(launchOptions) 
         // `args` is an array of all the arguments that will
@@ -69,10 +69,11 @@ module.exports = defineConfig({
       userAgent: null,
       reporter: "cypress-multi-reporters",
      reporterOptions: {
-    configFile: "reporterOpts.json"
+    configFile: "reporterOpts.json",
   }
     
     },
+    
     env: {
       "pt_username": `${process.env.PT_USER_NAME}`,
       "pt_password":`${process.env.PT_PASSWORD}`,
@@ -87,6 +88,12 @@ module.exports = defineConfig({
       "itclientsecret": `${process.env.IT_CLIENT_SECRET}`,
       "iturl": `${process.env.ITURL}`
      
-    }
+    },
+    "retries":{
+      "runMode":2,
+      "openMode":1
   }
+    
+  }
+  
 });
