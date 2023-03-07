@@ -56,5 +56,6 @@ modules.xml
 cypress.env.json
 setenv.sh
 .github/workflows/main_old.yml
+slackUpload.sh
 
 
