@@ -134,6 +134,15 @@ class HomePage {
       Cypress._.repeat('{rightarrow}', slideAmount),
     );
   }
+
+  SlideDown(slideAmount) {
+    cy.get('.earning-activities__slider-touch-area')
+    .click({ multiple: true, force: true });
+    cy.get('.earning-activities__slider-touch-area')
+    .type(
+      Cypress._.repeat('{leftarrow}', slideAmount),
+    );
+  }
 }
   
  
