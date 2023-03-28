@@ -8,7 +8,8 @@ Given("I login to a market with {string}", function (string) {
         cy.loginPT();
       } else if (string  == "IT") {
         cy.loginIT();
-      } else {
-        cy.loginPT();
+      } else if (string == "AU"){
+        cy.loginAU();
       }  
+      else cy.loginPT();
   });
