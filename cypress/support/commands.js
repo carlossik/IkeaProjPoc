@@ -66,6 +66,33 @@ Cypress.Commands.add("loginPT", () => {
           cy.clickIfExist('#onetrust-accept-btn-handler')
         });
     })
+    Cypress.Commands.add("loginAU", () => {
+      cy.request({
+        method: 'POST',
+        url: Cypress.env("au").authUrl,
+        headers: {
+          'content-type':'application/x-www-form-urlencoded',
+          'Authorization':'Basic WW9sYWluZS5jaGFiZXJuYXVkLXBldGl0ZWF1QGluZ2thLmlrZWEuY29tOlBvcnR1Z2FsUGlsb3QyMDIy'          
+        },
+        body: {
+          grant_type: 'password',
+          client_id:Cypress.env("au").ClientID ,
+          client_secret:Cypress.env("au").ClientSecret ,
+          username:Cypress.env("au").userName,
+          password:Cypress.env("au").passWord,
+          audience: 'https://retail.api.ikea.com',
+          }
+      }).then(function(response){
+        this.value = response.body.access_token;
+        cy.log("Value "+this.value);
+            expect(response.status).to.equal(200);
+            cy.setCookie('idp_reguser', this.value);
+            cy.visit('https://www.ikea.com/au/en/loyalty-hub/')
+            cy.clickIfExist('#onetrust-accept-btn-handler')
+            cy.visit('https://www.ikea.com/au/en/loyalty-hub/?features=rl-rewards,rl-earningActivities,rl-faq')
+          });
+      })
+
     Cypress.Commands.add("loginIT", () => {
       cy.request({
         method: 'POST',
@@ -92,28 +119,5 @@ Cypress.Commands.add("loginPT", () => {
    
    
         })
-      Cypress.Commands.add("login", (market) => {
-        cy.request({
-          method: 'POST',
-          url: (Cypress.env.CYPRESS_PTauthUrl),
-          headers: {
-            'content-type':'application/x-www-form-urlencoded'          
-          },
-          body: {
-            grant_type: 'password',
-            client_id:Cypress.env('CYPRESS_PTClientID') ,
-            client_secret:Cypress.env('CYPRESS_PTClientSecret') ,
-            username:Cypress.env('CYPRESS_PTusername'),
-            password:Cypress.env('CYPRESS_PTpassword'),
-            audience: 'https://retail.api.ikea.com',
-            }
-        }).then(function(response){
-          this.value = response.body.access_token;
-          cy.log("Value "+this.value);
-              expect(response.status).to.equal(200);
-              cy.setCookie('idp_reguser', this.value);
-              cy.visit('https://www.ikea.com/pt/en/loyalty-hub/')
-              cy.clickIfExist('#onetrust-accept-btn-handler')
-            });
-        })
+     
   
