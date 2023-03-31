@@ -5,16 +5,16 @@ Feature: Verify Rewards Displayed For User
     Scenario Outline: Reward Keys are displayed
         Given I login to a market with "<region_Credentials>"
         Then my reward keys should be displayed
-        Then the number of rewards displayed are 10
+        Then the number of rewards displayed are "<rewards>"
         Then total Keys are displayed
         Then History button is displayed
         Then How to collect reward keys is displayed
         Then Frequently asked questions are displayed
          Examples:
 
-            | region_Credentials |
-            | PT                 |
-            | IT                 |
-            | AU                 |
+            | region_Credentials |rewards|
+            | PT                 |10     |
+            | IT                 |10     |
+            | AU                 |8      |
    
 
