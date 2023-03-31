@@ -9,9 +9,8 @@ const homePage = require("../../pages/HomePage").default;
 Then("my reward keys should be displayed", function () {
   cy.get("#rewardsGrid").should("be.visible");
 });
-Then("the number of rewards displayed are 10", function () {
-  
-  cy.get('*[id^="rewards-reward-"]').should('have.length',10);
+Then("the number of rewards displayed are {string}", function (reward) {
+  cy.get('*[id^="rewards-reward-"]').should('have.length',reward);
 })
 Then("total Keys are displayed", function () {
   
