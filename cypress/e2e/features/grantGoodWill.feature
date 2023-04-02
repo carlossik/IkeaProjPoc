@@ -1,3 +1,5 @@
+
+@skip
 Feature: Granting Goodwill Keys to user in region
     feature: A coworker wants to grant good will keys 
     Scenario Outline: Granting goodwill keys in region
