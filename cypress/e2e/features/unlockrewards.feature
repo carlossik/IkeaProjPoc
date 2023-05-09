@@ -1,4 +1,4 @@
-@portugal
+
 Feature: Verify reward amount and Unlock rewards
     Feature a user can unlock rewards when they have enough keys
     Background:
