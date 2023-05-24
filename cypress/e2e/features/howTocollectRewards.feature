@@ -13,9 +13,9 @@ Feature: Verify How To Collect Rewards
         Examples:
 
             | region_Credentials | rewards | keys  | amount |
-            | PT                 | 5       | € 520 | 135    |
-            | IT                 | 4       | € 520 | 220    |
-            | AU                 | 6       | $ 460 | 92     |
+            | PT                 | 4       | € 520 | 135    |
+            | IT                 | 3       | € 520 | 220    |
+            | AU                 | 5       | $ 460 | 92     |
 
 
 

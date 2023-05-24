@@ -33,15 +33,7 @@ Then('available keys {string} are displayed', function (string) {
  
 });
 Then('available amount {string} is displayed', function (string) {
-  
-  //cy.get('[data-testid="/^activity-amount-value-(au|pt|it)-(interaction|spend)-/d{2}$/"]')
-  //cy.get('[data-testid^="activity-amount-value-"]').should(('have.text'),string)
+  //cy.get('[data-testid="/^activity-amount-value-(au|pt|it)-(interaction|spend)-/d{2}$/"]') 
   cy.get('[data-testid^="activity-amount-value-"]').should('include.text',string)
- 
-  
-  //cy.get('[data-testid="/^activity-amount-value-(au|pt|it)-spend-02/"]').should('have.text',string)
-  //cy.get('[data-testid]').should('have.attr', 'class').and('match',/*activity-amount-value-*/)
-  //.should('have.text',string)cy.get('[data-testid="activity-amount-value-it-spend-01"]')
-  //cy.get('[data-test-id^="table-element-"])
 });
 
