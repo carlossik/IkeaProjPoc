@@ -89,7 +89,7 @@ Cypress.Commands.add("loginPT", () => {
             cy.setCookie('idp_reguser', this.value);
             cy.visit('https://www.ikea.com/au/en/loyalty-hub/')
             cy.clickIfExist('#onetrust-accept-btn-handler')
-            cy.visit('https://www.ikea.com/au/en/loyalty-hub/?features=rl-rewards,rl-earningActivities,rl-faq')
+          
           });
       })
 

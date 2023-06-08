@@ -15,6 +15,6 @@ Feature: Verify Rewards Displayed For User
             | region_Credentials |rewards|
             | PT                 |10     |
             | IT                 |9      |
-            | AU                 |8      |
+            | AU                 |7      |
    
 
