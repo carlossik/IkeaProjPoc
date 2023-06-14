@@ -14,9 +14,8 @@ Feature: Verify How To Collect Rewards
 
             | region_Credentials | rewards | keys  | amount |
             | PT                 | 5       | € 520 | 135    |
-            | IT                 | 3       | € 520 | 220    |
             | AU                 | 5       | $ 460 | 92     |
-
+#IT removed due to functionality not present for IT 
 
 
 

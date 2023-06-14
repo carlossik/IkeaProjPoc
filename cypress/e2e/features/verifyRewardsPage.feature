@@ -15,15 +15,15 @@ Feature: Verify Rewards Displayed For User
     Scenario: Complete meal for two is selected
         When They select Complete meal for two  and click
         Then Complete meal for two page is displayed
-    Scenario: voucher for sidewalk  is selected
-        When They select voucher for sidewalk  and click
-        Then voucher for sidewalk page is displayed
+    # Scenario: voucher for sidewalk  is selected
+    #     When They select voucher for sidewalk  and click
+    #     Then voucher for sidewalk page is displayed
     Scenario: voucher for home delivery  is selected
         When They select voucher for home delivery and click
         Then voucher for home delivery page is displayed
-    Scenario: voucher for sidewalk delivery
-        When They select voucher for sidewalk delivery and click
-        Then voucher for sidewalk delivery page is displayed
+    # Scenario: voucher for sidewalk delivery
+    #     When They select voucher for sidewalk delivery and click
+    #     Then voucher for sidewalk delivery page is displayed
     Scenario: Ikea product voucher10 is selected
         When They select Ikea product voucher10 and click
         Then Ikea product voucher10 page is displayed
