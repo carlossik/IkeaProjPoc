@@ -13,7 +13,7 @@ Feature: Verify Rewards Displayed For User
          Examples:
 
             | region_Credentials |rewards|
-            | PT                 |10     |
+            | PT                 |9     |
             | IT                 |9      |
             | AU                 |7      |
    
