@@ -59,6 +59,9 @@ module.exports = defineConfig({
     defaultCommandTimeout: 20000,
     chromeWebSecurity: false,
     fixturesFolder: false,
+    experimentalMemoryManagement:true,
+    numTestsKeptInMemory : 0 ,
+
     
     supportFile: "cypress/support/e2e.js",
     e2e: {
@@ -91,7 +94,7 @@ module.exports = defineConfig({
     },
     "retries":{
       "runMode":2,
-      "openMode":1
+      "openMode":1,    
   }
     
   }
