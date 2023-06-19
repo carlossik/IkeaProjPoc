@@ -1,5 +1,5 @@
 
-
+@SmokeTest
 Feature: Perform health Check in Different Countries
     feature: we need to check the app health every 15 minutes
     Scenario Outline: Conducting a health Check

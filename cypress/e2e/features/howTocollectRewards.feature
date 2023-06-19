@@ -1,3 +1,4 @@
+@Regression
 Feature: Verify How To Collect Rewards
     Feature a user can see how to collect rewards and be able to use slider
 
