@@ -1,4 +1,5 @@
 
+@Regression
 Feature: Verify Rewards Displayed For User
        user can see all their rewards
     

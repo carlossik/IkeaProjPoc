@@ -1,4 +1,5 @@
 
+@Regression
 Feature: Verify Rewards Displayed For User
     Feature a user can see all rewards for specific market
      Scenario Outline: Reward pages are displayed
