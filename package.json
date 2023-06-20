@@ -9,6 +9,7 @@
     "@cypress-audit/lighthouse": "^1.3.1",
     "@faker-js/faker": "^7.6.0",
     "@shelex/cypress-allure-plugin": "^2.34.0",
+    "@testing-library/cypress": "^9.0.0",
     "cypress": "^12.5.0",
     "cypress-multi-reporters": "^1.6.2",
     "esbuild": "^0.15.12",
@@ -32,7 +33,7 @@
     "testH": "cypress run --e2e  --browser chrome --spec cypress/e2e/features/healthCheck.feature",
     "cy:open": "cypress open --e2e --browser chrome",
     "testportugal": "npx cypress run -e TAGS='@portugal' --headed --browser=chrome --spec **/*.feature",
-    "RegressionRun":"npx cypress run -e TAGS='@Regression' --headed --browser=chrome --spec **/*.feature",
+    "RegressionRun": "npx cypress run -e TAGS='@Regression' --headed --browser=chrome --spec **/*.feature",
     "testonCI": "cypress run ./node_modules/.bin/cypress open -e 'TAGS=not @ignore-this'"
   },
   "repository": {

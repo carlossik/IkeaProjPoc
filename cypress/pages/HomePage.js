@@ -1,3 +1,4 @@
+/* eslint-disable no-const-assign */
 /* eslint-disable no-extra-semi */
 /* eslint-disable no-unused-vars */
 class HomePage {
@@ -84,17 +85,10 @@ class HomePage {
     return this;
   }
 
-  displayedRewards = {
-    cakeAndHotDrinkForOne: () => cy.get('#rewards-reward-4989 > .rewards__rewards__inner'),
-    voucherForDeliveryOrCollect: () => cy.get('#rewards-reward-4903 > .rewards__rewards__inner'),
-    cakeAndHotDrinkForTwo: () => cy.get('#rewards-reward-4988 > .rewards__rewards__inner'),
-    ikeaProductVoucher10: () => cy.get('#rewards-reward-4908 > .rewards__rewards__inner'),
-    completeMealForOne: () => cy.get('#rewards-reward-4907 > .rewards__rewards__inner'),
-    ikeaProductVoucher15: () => cy.get('#rewards-reward-4902 > .rewards__rewards__inner'),
-    voucherForHomeDelivery39: () => cy.get('#rewards-reward-4900 > .rewards__rewards__inner'),
-    voucherForClickAndCollect: () => cy.get('#rewards-reward-4904 > .rewards__rewards__inner'),
-    voucherForSidewalkDelivery: () => cy.get('#rewards-reward-4898 > .rewards__rewards__inner'),
-    completeMealForTwo: () => cy.get('#rewards-reward-4901 > .rewards__rewards__inner'),
+  countryMinimum = {
+    AU: 30,
+    PT:30,
+    IT:30
   };
   verifyRewards() {
     this.displayedRewards.each(($el, index) => {
@@ -119,6 +113,14 @@ class HomePage {
     cy.get('#rewards-total-balance > span')
     .invoke('text').as('textFunction');
     cy.log('===== Print Value Using Invoke Command ==== ', this.textFunction);
+  }
+  HasEnoughBalanceForReward(countryMinimum){
+    //var affordable = false
+    if(Number(this.GetTotalKeys )>= countryMinimum){
+      return true;
+    }
+    
+    
   }
   GetTotalKeysOnHistoryTab() {
     cy.get('[id="rewards--history-total"]')
