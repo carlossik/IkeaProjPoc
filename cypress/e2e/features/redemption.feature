@@ -29,7 +29,7 @@ Feature:Redeeming a reward
             Examples:
                   | region_Credentials |
                   | AU                 |
-
+                 
 
 #using only AU since that is the only account at the moment that has rewards redeemed.
 
