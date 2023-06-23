@@ -14,8 +14,8 @@ Feature: Verify Rewards Displayed For User
          Examples:
 
             | region_Credentials |rewards|
-            | PT                 |9     |
-            | IT                 |9      |
-            | AU                 |7      |
+            | pt                 |9     |
+            | it                 |9      |
+            | au                 |7      |
    
 

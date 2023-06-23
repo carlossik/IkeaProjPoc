@@ -14,7 +14,7 @@ Feature:Redeeming a reward
             Examples:
 
                   | region_Credentials |
-                  | AU                 |
+                  | AU              |
 
       Scenario Outline: User tries to use reward
             Given I login to a market with "<region_Credentials>"
@@ -28,8 +28,8 @@ Feature:Redeeming a reward
             And Name is displayed on family card
             Examples:
                   | region_Credentials |
-                  | AU                 |
-
+                  | AU                |
+                 
 
 #using only AU since that is the only account at the moment that has rewards redeemed.
 

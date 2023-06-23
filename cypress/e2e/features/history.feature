@@ -13,9 +13,9 @@ Feature: Verify Rewards History displayed
          Examples:
 
             | region_Credentials |
-            | PT                 |
-            | IT                 |
-            | AU                 |
+            | pt                |
+            | it                 |
+            | au                 |
    
 
 
