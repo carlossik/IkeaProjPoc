@@ -25,7 +25,6 @@ save$20OnIkeaHomeFurnishings:"[data-testid=\"reward-5062\"] > .rewards__rewards_
 }
 
 itRewards ={
-
 cakeAndCoffeeForOne : "[data-testid=\"reward-5141\"] > .rewards__rewards__inner",
 cakeAndCoffeeForTwo : "[data-testid=\"reward-4911\"] > .rewards__rewards__inner",
 completeMealForOne : "[data-testid=\"reward-4916\"] > .rewards__rewards__inner",
