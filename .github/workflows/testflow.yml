@@ -12,7 +12,7 @@ jobs:
       - name: setup node
         uses: actions/setup-node@v3
         with:
-             node-version: latest
+             node-version: 16
       - name: Upgrade packages
         run: npm install @badeball/cypress-cucumber-preprocessor
       - name: Checkout
