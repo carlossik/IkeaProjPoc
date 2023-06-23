@@ -30,7 +30,7 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 import '@testing-library/cypress/add-commands'
-import cypress from 'cypress'
+//import cypress from 'cypress'
 
 
 
