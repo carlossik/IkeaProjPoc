@@ -30,6 +30,45 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 import '@testing-library/cypress/add-commands'
+import cypress from 'cypress'
+
+
+
+
+
+Cypress.Commands.add('OneLogin', (market) => {
+  cy.request({
+    method: 'POST',
+    url: Cypress.env(`(${market})`).authUrl,
+    headers: {
+      'content-type':'application/x-www-form-urlencoded',
+      'Authorization':'Basic WW9sYWluZS5jaGFiZXJuYXVkLXBldGl0ZWF1QGluZ2thLmlrZWEuY29tOlBvcnR1Z2FsUGlsb3QyMDIy'          
+    },
+    body: {
+      grant_type: 'password',
+      client_id:Cypress.env(`(${market})`).ClientID ,
+      client_secret:Cypress.env(`(${market})`).ClientSecret ,
+      username:Cypress.env(`(${market})`).userName,
+      password:Cypress.env(`(${market})`).passWord,
+      audience: 'https://retail.api.ikea.com',
+      }
+  }).then(function(response){
+    this.value = response.body.access_token;
+    cy.log("Value "+this.value);
+        expect(response.status).to.equal(200);
+        cy.setCookie('idp_reguser', this.value);
+        cy.visit('https://www.ikea.com/au/en/loyalty-hub/')
+        cy.clickIfExist('#onetrust-accept-btn-handler')
+      
+      });
+
+ })
+
+
+
+
+
+
 
 Cypress.Commands.add( "clickIfExist", (element) => {
   cy.get('body').then((body) => {
@@ -118,7 +157,12 @@ Cypress.Commands.add("loginPT", () => {
             cy.clickIfExist('#onetrust-accept-btn-handler')
           });
    
-   
         })
-     
-  
+
+        Cypress.Commands.add('findElementWithText', (text) => {
+          cy.get(`(${text})`);
+        })
+
+
+
+        
