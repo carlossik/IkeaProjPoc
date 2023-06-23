@@ -45,7 +45,9 @@ Given("I have enough Keys to redeem a reward", function () {
     cy.get('.reward__status__label').should('be.visible')
   })
   When("I click on the view qr code button",function(){
-    cy.get('.reward__btn--primary > .reward__btn__inner')
+
+    cy.get('.reward__btn--primary > .reward__btn__inner > .reward__btn__label')
+
     .click({force:true})
   })
   Then("I should see QR code displayed", function(){
