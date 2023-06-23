@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Cypress install
-        run: npm install --legacy-peer-deps
+        run: npm install --force
       - name: create the cypress.env.json file
         id: create-json
         uses: jsdaniell/create-json@1.1.2
