@@ -25,7 +25,7 @@
     "stepDefinitions": "cypress/e2e/**/*.{js,ts}",
     "html": {
       "enabled": true,
-      "output": "cypress/reports/cucumber-html/test-report.html"
+      "output": "docs/index.html"
     }
   },
   "scripts": {

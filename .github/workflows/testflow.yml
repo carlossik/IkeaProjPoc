@@ -37,8 +37,16 @@ jobs:
         if: always()
         with:
           name: cypress-execution-report
-          path: cypress/reports/cucumber-html/test-report.html
+          path: docs/index.html
           retention-days: 10
+      - name: Deploy report page
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+
       - name: Report Status to Slack
         if: always()
         uses: ravsamhq/notify-slack-action@master
