@@ -34,7 +34,7 @@ Given("I have enough Keys to redeem a reward", function () {
     else this.skip()
   });
   When("I click on use reward button", function () {
-    cy.findAllByText("Use reward").eq(1).click({force:true});
+    cy.findAllByText("Use reward").eq(0).click({force:true});
   });
   Then("I should be taken to the redemption page", function () {
     cy.url().should('contain', '/loyalty-hub/rewards/');
