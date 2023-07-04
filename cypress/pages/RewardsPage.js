@@ -25,15 +25,15 @@ save$20OnIkeaHomeFurnishings:"[data-testid=\"reward-5062\"] > .rewards__rewards_
 }
 
 itRewards ={
-cakeAndCoffeeForOne : "[data-testid=\"reward-5141\"] > .rewards__rewards__inner",
-cakeAndCoffeeForTwo : "[data-testid=\"reward-4911\"] > .rewards__rewards__inner",
-completeMealForOne : "[data-testid=\"reward-4916\"] > .rewards__rewards__inner",
-completeMealForTwo: "[data-testid=\"reward-4914\"] > .rewards__rewards__inner",
-voucherForParcelDelivery : "[data-testid=\"reward-4913\"] > .rewards__rewards__inner",
+vegetarianMenuFor1 : "[data-testid=\"reward-5141\"] > .rewards__rewards__inner",
+breakfastMenuAt1 : "[data-testid=\"reward-4911\"] > .rewards__rewards__inner",
+dessertMenufor1 : "[data-testid=\"reward-4916\"] > .rewards__rewards__inner",
+menuVegeTaliandWhichMeatballs: "[data-testid=\"reward-5143\"] > .rewards__rewards__inner",
+voucherOnfurnitureAndAccessories : "[data-testid=\"reward-4913\"] > .rewards__rewards__inner",
 voucherForHomeDelivery:"[data-testid=\"reward-5140\"] > .rewards__rewards__inner",
-ikeaProductVoucher10: "[data-testid=\"reward-4918\"] > .rewards__rewards__inner",
-voucherForClickCollectPickup:"[data-testid=\"reward-5139\"] > .rewards__rewards__inner",
-ikeaProductVoucher15:"[data-testid=\"reward-4909\"] > .rewards__rewards__inner"
+voucherOnFurnitureAndAccessories: "[data-testid=\"reward-4918\"] > .rewards__rewards__inner",
+voucherOnDeliveryAndCollection:"[data-testid=\"reward-5139\"] > .rewards__rewards__inner",
+swedishMeatballMenufor1:"[data-testid=\"reward-5142\"] > .rewards__rewards__inner"
 
 
 }
