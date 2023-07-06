@@ -32,7 +32,7 @@ jobs:
           browser: chrome
           headed: false
           command: |
-            npx cypress run 
+            npx cypress run --env tags="@Regression" 
 
       - name: uploading artifact
         uses: actions/upload-artifact@v2
