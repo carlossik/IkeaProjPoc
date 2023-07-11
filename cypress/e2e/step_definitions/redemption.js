@@ -33,6 +33,13 @@ Given("I have enough Keys to redeem a reward", function () {
     {cy.log("There is a redeemed reward here")}
     else this.skip()
   });
+  Given("I have redeemed an instore reward",function(){
+    redemptionPage.isInstoreReward()
+    
+    }
+  )
+
+  
   When("I click on use reward button", function () {
     cy.findAllByText("Use reward").eq(0).click({force:true});
   });
@@ -40,16 +47,24 @@ Given("I have enough Keys to redeem a reward", function () {
     cy.url().should('contain', '/loyalty-hub/rewards/');
   });
   Then("I should see the Valid until date",function(){
-    
     redemptionPage.expiryDateDisplayedS()
   })
+  Then("I should see voucher code displayed",function(){
+    redemptionPage.voucherCodeDisplayed()
+  })
+  When("I click on the Copy code button",function(){
+    redemptionPage.copyVoucherCode()
+  })
   When("I click on the view qr code button",function(){
-    
-    redemptionPage.viewQRcodes()
+    redemptionPage.isItOnlineReward()
+   
   })
   Then("I should see QR code displayed", function(){
    
     redemptionPage.isQRcodeDisplayed()
+  })
+  Then("voucher code is copied",function(){
+
   })
   Then("family card is displayed",function(){
     redemptionPage.isFamilyCardDidplayed()
