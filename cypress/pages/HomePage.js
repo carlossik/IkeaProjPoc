@@ -62,7 +62,7 @@ class HomePage {
   }
 
   CustomerMemberCardDisplayed() {
-    cy.get('.member-card__section')
+    cy.get('.member-card__section1')
     .should('be.visible');
     return this;
   }
