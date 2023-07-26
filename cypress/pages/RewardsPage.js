@@ -20,7 +20,8 @@ save$10onIkeaHomeFurnishings:'[data-testid="reward-AU-PRIVATE-LOYALTY-KEYS-OFFER
 freeEatmealatSwedRestaurant:'[data-testid="reward-AU-PRIVATE-LOYALTY-KEYS-OFFER-5"] > .rewards__rewards__inner',
 save$15onOnlineDelivery:'[data-testid="reward-AU-PRIVATE-LOYALTY-KEYS-OFFER-2"] > .rewards__rewards__inner',
 save$30OnOnlineDelivery:'[data-testid="reward-AU-PRIVATE-LOYALTY-KEYS-OFFER-3"] > .rewards__rewards__inner',
-save$20OnIkeaHomeFurnishings:'[data-testid="reward-AU-PRIVATE-LOYALTY-KEYS-OFFER-7"] > .rewards__rewards__inner'
+save$20OnIkeaHomeFurnishings:'[data-testid="reward-AU-PRIVATE-LOYALTY-KEYS-OFFER-7"] > .rewards__rewards__inner',
+Save$40OnassemblyServiceforOnlineOrders:'[data-testid="reward-AU-PRIVATE-LOYALTY-KEYS-OFFER-8"] > .rewards__rewards__inner'
 
 }
 
