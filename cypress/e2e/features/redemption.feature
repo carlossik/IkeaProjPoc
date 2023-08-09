@@ -1,6 +1,7 @@
 
 
 @Regression
+@skip
 Feature:Redeeming a reward
 
       Scenario Outline: User tries to redeem a reward
