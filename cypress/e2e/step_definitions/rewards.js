@@ -7,10 +7,17 @@ const homePage = require("../../pages/HomePage").default;
 
 
 Then("my reward keys should be displayed", function () {
-  cy.get("#rewardsGrid").should("be.visible");
+  cy.get('[data-testid="rewards-total-balance"] > span').should("be.visible");
 });
 Then("the number of rewards displayed are {string}", function (reward) {
-  cy.get('*[id^="rewards-reward-"]').should('have.length',reward);
+  cy.get('*.rewards__rke-reward-card__image > .rewards__aspect-ratio-box > .rewards__image')
+  .should('have.length',reward);
+  
+
+
+
+
+  //cy.get('*[data-testid="rke-reward-card-IT-PRIVATE-LOYALTY-KEYS-OFFER-"]').should('have.length',reward);
 })
 Then("total Keys are displayed", function () {
   
