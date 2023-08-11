@@ -1,6 +1,5 @@
 class RewardsPage {
 
-
 ptRewards = {
 cakeAndHotDrinkForOne : '[data-testid="rke-reward-card-PT-PRIVATE-LOYALTY-KEYS-OFFER-16"] > .rewards__rke-reward-card__image > .rewards__aspect-ratio-box > .rewards__image',
 completeMealForOne : '[data-testid="rke-reward-card-PT-PRIVATE-LOYALTY-KEYS-OFFER-10"] > .rewards__rke-reward-card__image > .rewards__aspect-ratio-box > .rewards__image',
@@ -36,13 +35,7 @@ voucherOnFurnitureAndAccessories: '[data-testid="rke-reward-card-IT-PRIVATE-LOYA
 voucherOnDeliveryAndCollection:"[data-testid=\"rke-reward-card-IT-PRIVATE-LOYALTY-KEYS-OFFER-11\"] > .rewards__rke-reward-card__image > .rewards__aspect-ratio-box > .rewards__image",
 swedishMeatballMenufor1:'[data-testid="rke-reward-card-IT-PRIVATE-LOYALTY-KEYS-OFFER-14"] > .rewards__rke-reward-card__image > .rewards__aspect-ratio-box > .rewards__image'
 
-
 }
-
-
-
-
-
 
 }
 export default new RewardsPage();
