@@ -48,7 +48,7 @@ class HomePage {
     .should('be.visible');
   }
   RewardTotaldisPlayed() {
-    cy.get('#rewards-total-balance > span')
+    cy.get('[data-testid="rewards-total-balance"]')
     .should('be.visible');
     cy.log('reward is visible');
     return this;
@@ -110,7 +110,7 @@ class HomePage {
     .should('be.visible');
   }
   GetTotalKeys() {
-    cy.get('#rewards-total-balance > span')
+    cy.get('[data-testid="rewards-total-balance"]')
     .invoke('text').as('textFunction');
     cy.log('===== Print Value Using Invoke Command ==== ', this.textFunction);
   }
