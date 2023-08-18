@@ -5,7 +5,7 @@ import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 const homePage = require("../../pages/HomePage").default;
 
 Then("my reward keys should be displayed", function () {
-  cy.get('[data-testid="rewards-total-balance"] > span').should("be.visible");
+  cy.get('[data-testid="rewards-total-balance"]').should("be.visible");
 });
 Then("the number of rewards displayed are {string}", function (reward) {
   cy.get('*.rewards__rke-reward-card__image > .rewards__aspect-ratio-box > .rewards__image')
