@@ -35,7 +35,9 @@ class HomePage {
     .should('have.length', 10);
   }
   clickOpenHistoryButton() {
+
     cy.get('[data-testid="open-balance-history-button"]')
+      .find('span')
       .should('be.visible')
       .as('History')
       .click({ force: true });
