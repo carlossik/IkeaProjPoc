@@ -35,7 +35,8 @@ class HomePage {
     .should('have.length', 10);
   }
   clickOpenHistoryButton() {
-    cy.get('.rewards__keys__balance-history-button__label')
+    //cy.get('.rewards__keys__balance-history-button__label')//get.rewards__keys__balance-history-button__label
+    cy.get('[data-testid="open-balance-history-button"] > .rewards__btn__inner')
       .find('span')
       .should('be.visible')
       .as('History')
@@ -44,7 +45,8 @@ class HomePage {
   }
 
   RewarHistoryButtonsdisplayed() {
-    cy.get('.rewards__keys__balance-history-button__label')
+    //cy.get('.rewards__keys__balance-history-button__label')
+    cy.get('[data-testid="open-balance-history-button"] > .rewards__btn__inner')
     .should('be.visible');
   }
   RewardTotaldisPlayed() {
@@ -110,7 +112,7 @@ class HomePage {
     .should('be.visible');
   }
   GetTotalKeys() {
-    cy.get('#rewards-total-balance > span')
+    cy.get('[data-testid="rewards-total-balance"]')
     .invoke('text').as('textFunction');
     cy.log('===== Print Value Using Invoke Command ==== ', this.textFunction);
   }
