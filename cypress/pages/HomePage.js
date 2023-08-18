@@ -35,8 +35,7 @@ class HomePage {
     .should('have.length', 10);
   }
   clickOpenHistoryButton() {
-    cy.get('.rewards__keys__balance-history-button__label')
-      .find('span')
+    cy.get('[data-testid="open-balance-history-button"]')
       .should('be.visible')
       .as('History')
       .click({ force: true });
@@ -44,7 +43,7 @@ class HomePage {
   }
 
   RewarHistoryButtonsdisplayed() {
-    cy.get('.rewards__keys__balance-history-button__label')
+    cy.get('[data-testid="open-balance-history-button"]')
     .should('be.visible');
   }
   RewardTotaldisPlayed() {
